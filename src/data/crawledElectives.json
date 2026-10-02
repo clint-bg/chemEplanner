@@ -1,5 +1,128 @@
 [
   {
+    "classId": "crawled_BIO_130",
+    "classNumber": "130",
+    "deptCode": "BIO",
+    "typicalYear": "Sophomore",
+    "credits": 4,
+    "topic": "Biology",
+    "termsTaught": [
+      "Fall",
+      "Winter"
+    ],
+    "prereqs": [],
+    "concurrentPrereqs": [],
+    "category": "EMSB",
+    "genEdSets": [],
+    "substitutionAllowed": true,
+    "substitutionClassIds": [],
+    "abetCategory": "Sci",
+    "subjectCategories": [
+      "Biomedical & Biological Engineering",
+      "Materials & Nanoscience"
+    ],
+    "description": "General biology course with laboratory for biology majors.  Introduction to disciplines in the life sciences including methods for scientific inquiry, biochemical dynamics, cell structure and function, evolutionary theory, bioenergetics, and ecological interactions.",
+    "source": "BYU Catalog Crawler (Prerequisite)"
+  },
+  {
+    "classId": "crawled_BIO_220",
+    "classNumber": "220",
+    "deptCode": "BIO",
+    "typicalYear": "Sophomore",
+    "credits": 4,
+    "topic": "Biological Diversity: Animals",
+    "termsTaught": [
+      "Fall",
+      "Winter"
+    ],
+    "prereqs": [],
+    "concurrentPrereqs": [],
+    "category": "EMSB",
+    "genEdSets": [],
+    "substitutionAllowed": true,
+    "substitutionClassIds": [],
+    "abetCategory": "Sci",
+    "subjectCategories": [
+      "Biomedical & Biological Engineering"
+    ],
+    "description": "Comparative organization and evolutionary significance of morphological, physiological, reproductive, and ecological differences in invertebrates and vertebrates.  Laboratory included.",
+    "source": "BYU Catalog Crawler (Prerequisite)"
+  },
+  {
+    "classId": "crawled_BIO_230",
+    "classNumber": "230",
+    "deptCode": "BIO",
+    "typicalYear": "Sophomore",
+    "credits": 4,
+    "topic": "Biological Diversity: Plants",
+    "termsTaught": [
+      "Fall",
+      "Winter"
+    ],
+    "prereqs": [],
+    "concurrentPrereqs": [],
+    "category": "EMSB",
+    "genEdSets": [],
+    "substitutionAllowed": true,
+    "substitutionClassIds": [],
+    "abetCategory": "Sci",
+    "subjectCategories": [
+      "Biomedical & Biological Engineering"
+    ],
+    "description": "Comparative organization and evolutionary significance of morphological, physiological, reproductive, and ecological differences in fungi, algae, and principal groups of land plants.  Laboratory included.",
+    "source": "BYU Catalog Crawler (Prerequisite)"
+  },
+  {
+    "classId": "crawled_BIO_235",
+    "classNumber": "235",
+    "deptCode": "BIO",
+    "typicalYear": "Sophomore",
+    "credits": 3,
+    "topic": "Field Botany",
+    "termsTaught": [
+      "Fall",
+      "Spring"
+    ],
+    "prereqs": [],
+    "concurrentPrereqs": [],
+    "category": "EMSB",
+    "genEdSets": [],
+    "substitutionAllowed": true,
+    "substitutionClassIds": [],
+    "abetCategory": "Sci",
+    "subjectCategories": [
+      "Biomedical & Biological Engineering"
+    ],
+    "description": "Recognition, characteristics, and uses of common trees and shrubs.",
+    "source": "BYU Catalog Crawler (Prerequisite)"
+  },
+  {
+    "classId": "crawled_BIO_276",
+    "classNumber": "276",
+    "deptCode": "BIO",
+    "typicalYear": "Sophomore",
+    "credits": 3,
+    "topic": "Exploration of Teaching in Biological Sciences",
+    "termsTaught": [
+      "Fall"
+    ],
+    "prereqs": [
+      "crawled_BIO_220",
+      "crawled_BIO_230"
+    ],
+    "concurrentPrereqs": [],
+    "category": "EMSB",
+    "genEdSets": [],
+    "substitutionAllowed": true,
+    "substitutionClassIds": [],
+    "abetCategory": "Sci",
+    "subjectCategories": [
+      "Biomedical & Biological Engineering"
+    ],
+    "description": "Field-based initial teaching experience directed at helping prospective teachers experience demands and opportunities associated with teaching secondary students.",
+    "source": "BYU Catalog Crawler (Prerequisite)"
+  },
+  {
     "classId": "crawled_BIO_310",
     "classNumber": "310",
     "deptCode": "BIO",
@@ -9,7 +132,9 @@
     "termsTaught": [
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_BIO_130"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -81,7 +206,9 @@
     "termsTaught": [
       "Fall"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_BIO_130"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -131,7 +258,9 @@
       "Fall",
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_PWS_340"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -201,7 +330,9 @@
     "termsTaught": [
       "Fall"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_BIO_276"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -321,7 +452,9 @@
     "termsTaught": [
       "Fall"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_BIO_350"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -346,7 +479,9 @@
       "Fall",
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_PWS_340"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -369,7 +504,9 @@
     "termsTaught": [
       "Fall"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_BIO_230"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -415,7 +552,9 @@
     "termsTaught": [
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_BIO_220"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -438,7 +577,9 @@
     "termsTaught": [
       "Fall"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_BIO_220"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -532,7 +673,10 @@
     "termsTaught": [
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_BIO_230",
+      "crawled_BIO_350"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -557,7 +701,9 @@
     "termsTaught": [
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_PWS_340"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -605,7 +751,9 @@
     "termsTaught": [
       "Fall"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_BIO_350"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -647,7 +795,7 @@
     "deptCode": "BIO",
     "typicalYear": "Senior",
     "credits": 6,
-    "topic": "Aquatic Biology",
+    "topic": "Electron Microscopy",
     "termsTaught": [
       "Fall",
       "Winter"
@@ -660,6 +808,7 @@
     "substitutionClassIds": [],
     "abetCategory": "Sci",
     "subjectCategories": [
+      "Semiconductors & Microelectronics",
       "Biomedical & Biological Engineering"
     ],
     "description": "Independent student research under faculty supervision.",
@@ -865,7 +1014,9 @@
     "termsTaught": [
       "Fall"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_PWS_340"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -911,7 +1062,9 @@
     "termsTaught": [
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_BIO_350"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -959,7 +1112,9 @@
       "Fall",
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_BIO_350"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -1002,7 +1157,7 @@
     "deptCode": "BIO",
     "typicalYear": "Senior",
     "credits": 6,
-    "topic": "Evolutionary Biology",
+    "topic": "Field Biology",
     "termsTaught": [
       "Fall",
       "Winter"
@@ -1017,7 +1172,7 @@
     "subjectCategories": [
       "Biomedical & Biological Engineering"
     ],
-    "description": "BIO 559R - 300+ Level Course from BYU Catalog.",
+    "description": "BIO 559R - BYU Catalog.",
     "source": "BYU Catalog Crawler"
   },
   {
@@ -1074,7 +1229,7 @@
     "deptCode": "BIO",
     "typicalYear": "Senior",
     "credits": 5,
-    "topic": "Genetics Science In-Service",
+    "topic": "Meterology Science In-Service",
     "termsTaught": [
       "Summer"
     ],
@@ -1366,7 +1521,9 @@
       "Fall",
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "035"
+    ],
     "concurrentPrereqs": [],
     "category": "Eng",
     "genEdSets": [],
@@ -1390,7 +1547,9 @@
       "Fall",
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "035"
+    ],
     "concurrentPrereqs": [],
     "category": "Eng",
     "genEdSets": [],
@@ -3439,7 +3598,12 @@
       "Fall",
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_CE_424",
+      "crawled_CE_421",
+      "crawled_CE_442",
+      "crawled_CE_461"
+    ],
     "concurrentPrereqs": [],
     "category": "Eng",
     "genEdSets": [],
@@ -3701,7 +3865,9 @@
     "termsTaught": [
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_CE_414"
+    ],
     "concurrentPrereqs": [],
     "category": "Eng",
     "genEdSets": [],
@@ -3751,7 +3917,9 @@
     "termsTaught": [
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_CE_421"
+    ],
     "concurrentPrereqs": [],
     "category": "Eng",
     "genEdSets": [],
@@ -3774,7 +3942,9 @@
     "termsTaught": [
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_CE_424"
+    ],
     "concurrentPrereqs": [],
     "category": "Eng",
     "genEdSets": [],
@@ -3797,7 +3967,10 @@
     "termsTaught": [
       "Fall"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_CE_421",
+      "crawled_CE_424"
+    ],
     "concurrentPrereqs": [],
     "category": "Eng",
     "genEdSets": [],
@@ -3844,7 +4017,9 @@
     "termsTaught": [
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_CE_424"
+    ],
     "concurrentPrereqs": [],
     "category": "Eng",
     "genEdSets": [],
@@ -3867,7 +4042,9 @@
     "termsTaught": [
       "Fall"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_CE_421"
+    ],
     "concurrentPrereqs": [],
     "category": "Eng",
     "genEdSets": [],
@@ -3962,7 +4139,9 @@
     "termsTaught": [
       "Fall"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_CE_414"
+    ],
     "concurrentPrereqs": [],
     "category": "Eng",
     "genEdSets": [],
@@ -4475,8 +4654,59 @@
     "subjectCategories": [
       "Numerical Methods & Simulation"
     ],
-    "description": "CE 594R - 300+ Level Course from BYU Catalog.",
+    "description": "CE 594R - BYU Catalog.",
     "source": "BYU Catalog Crawler"
+  },
+  {
+    "classId": "crawled_CELL_220",
+    "classNumber": "220",
+    "deptCode": "CELL",
+    "typicalYear": "Sophomore",
+    "credits": 4,
+    "topic": "Human Anatomy (with lab)",
+    "termsTaught": [
+      "Fall",
+      "Winter",
+      "Spring"
+    ],
+    "prereqs": [],
+    "concurrentPrereqs": [],
+    "category": "EMSB",
+    "genEdSets": [],
+    "substitutionAllowed": true,
+    "substitutionClassIds": [],
+    "abetCategory": "Sci",
+    "subjectCategories": [
+      "Semiconductors & Microelectronics",
+      "Biomedical & Biological Engineering",
+      "Materials & Nanoscience"
+    ],
+    "description": "Rigorous, in-depth coverage of the structure and function of the human body. Gross and microscopic anatomy of all major organ systems with their associated organs and tissues. Fundamental physiology concepts in each system are also introduced. Lab instruction includes prosected human cadavers.",
+    "source": "BYU Catalog Crawler (Prerequisite)"
+  },
+  {
+    "classId": "crawled_CELL_295R",
+    "classNumber": "295R",
+    "deptCode": "CELL",
+    "typicalYear": "Sophomore",
+    "credits": 2,
+    "topic": "Introductory Undergraduate Research in Cell Biology and Physiology",
+    "termsTaught": [
+      "Fall",
+      "Winter"
+    ],
+    "prereqs": [],
+    "concurrentPrereqs": [],
+    "category": "EMSB",
+    "genEdSets": [],
+    "substitutionAllowed": true,
+    "substitutionClassIds": [],
+    "abetCategory": "Sci",
+    "subjectCategories": [
+      "Biomedical & Biological Engineering"
+    ],
+    "description": "Basic (entry level) research laboratory experience for students interested in cell biology and physiology.",
+    "source": "BYU Catalog Crawler (Prerequisite)"
   },
   {
     "classId": "crawled_CELL_305",
@@ -4514,7 +4744,9 @@
       "Fall",
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_CELL_220"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -4757,7 +4989,9 @@
     "termsTaught": [
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_CELL_444"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -4853,7 +5087,9 @@
       "Fall",
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_CELL_295R"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -4901,7 +5137,9 @@
       "Fall",
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_CELL_220"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -5063,7 +5301,9 @@
     "termsTaught": [
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_CELL_305"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -5158,7 +5398,9 @@
     "termsTaught": [
       "Fall"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_CHEM_351"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -5183,7 +5425,9 @@
       "Fall",
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_CHEM_351"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -5208,7 +5452,10 @@
     "termsTaught": [
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_CHEM_351M",
+      "crawled_CHEM_352"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -5521,7 +5768,9 @@
     "termsTaught": [
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_CHEM_464"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -5906,7 +6155,9 @@
     "termsTaught": [
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_CHEM_521"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -6237,7 +6488,9 @@
     "termsTaught": [
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_CHEM_584"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -6295,7 +6548,7 @@
     "subjectCategories": [
       "Computation & Data Science"
     ],
-    "description": "CHEM 596R - 300+ Level Course from BYU Catalog.",
+    "description": "CHEM 596R - BYU Catalog.",
     "source": "BYU Catalog Crawler"
   },
   {
@@ -6636,7 +6889,9 @@
     "termsTaught": [
       "Fall"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_ECEN_301"
+    ],
     "concurrentPrereqs": [],
     "category": "Eng",
     "genEdSets": [],
@@ -6732,7 +6987,9 @@
     "termsTaught": [
       "Fall"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_ECEN_462"
+    ],
     "concurrentPrereqs": [],
     "category": "Eng",
     "genEdSets": [],
@@ -7002,7 +7259,7 @@
     "subjectCategories": [
       "Computation & Data Science"
     ],
-    "description": "EC EN 522R - 300+ Level Course from BYU Catalog.",
+    "description": "EC EN 522R - BYU Catalog.",
     "source": "BYU Catalog Crawler"
   },
   {
@@ -7085,7 +7342,9 @@
     "termsTaught": [
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_ECEN_483"
+    ],
     "concurrentPrereqs": [],
     "category": "Eng",
     "genEdSets": [],
@@ -7142,7 +7401,7 @@
     "subjectCategories": [
       "Numerical Methods & Simulation"
     ],
-    "description": "EC EN 542R - 300+ Level Course from BYU Catalog.",
+    "description": "EC EN 542R - BYU Catalog.",
     "source": "BYU Catalog Crawler"
   },
   {
@@ -7624,7 +7883,9 @@
       "Fall",
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_MATH_320"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -7674,7 +7935,9 @@
       "Fall",
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_MATH_322"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -7796,7 +8059,9 @@
       "Fall",
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_MATH_344"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -7846,7 +8111,9 @@
       "Fall",
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_MATH_346"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -8138,7 +8405,9 @@
       "Fall",
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_MATH_402"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -8187,7 +8456,9 @@
       "Fall",
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_MATH_404"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -8401,7 +8672,9 @@
       "Fall",
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_MATH_436"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -8743,7 +9016,7 @@
     "subjectCategories": [
       "Computation & Data Science"
     ],
-    "description": "MATH 513R - 300+ Level Course from BYU Catalog.",
+    "description": "MATH 513R - BYU Catalog.",
     "source": "BYU Catalog Crawler"
   },
   {
@@ -9190,6 +9463,57 @@
     "source": "BYU Catalog Crawler"
   },
   {
+    "classId": "crawled_MEEN_272",
+    "classNumber": "272",
+    "deptCode": "ME EN",
+    "typicalYear": "Sophomore",
+    "credits": 3,
+    "topic": "Engineering Graphics--Principles and Applications",
+    "termsTaught": [
+      "Fall",
+      "Winter",
+      "Spring"
+    ],
+    "prereqs": [],
+    "concurrentPrereqs": [],
+    "category": "Eng",
+    "genEdSets": [],
+    "substitutionAllowed": true,
+    "substitutionClassIds": [],
+    "abetCategory": "Eng",
+    "subjectCategories": [
+      "Numerical Methods & Simulation"
+    ],
+    "description": "Comprehensive applications of CAD-based national (ANSI) and international (ISO) graphics standards, including coordinate and geometric dimensioning and tolerancing practices, manufacturing, and product verification procedures.",
+    "source": "BYU Catalog Crawler (Prerequisite)"
+  },
+  {
+    "classId": "crawled_MEEN_273",
+    "classNumber": "273",
+    "deptCode": "ME EN",
+    "typicalYear": "Sophomore",
+    "credits": 3,
+    "topic": "Introduction to Scientific Computing and Computer-Aided Engineering",
+    "termsTaught": [
+      "Fall",
+      "Winter",
+      "Spring"
+    ],
+    "prereqs": [],
+    "concurrentPrereqs": [],
+    "category": "Eng",
+    "genEdSets": [],
+    "substitutionAllowed": true,
+    "substitutionClassIds": [],
+    "abetCategory": "Eng",
+    "subjectCategories": [
+      "Numerical Methods & Simulation",
+      "Computation & Data Science"
+    ],
+    "description": "Computer programming for engineers taught in context of solving physical systems using numerical methods. Student will program solutions using the C++ language, spreadsheets, symbolic solvers, etc.",
+    "source": "BYU Catalog Crawler (Prerequisite)"
+  },
+  {
     "classId": "crawled_MEEN_312",
     "classNumber": "312",
     "deptCode": "ME EN",
@@ -9301,7 +9625,9 @@
     "termsTaught": [
       "Fall"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_MEEN_321"
+    ],
     "concurrentPrereqs": [],
     "category": "Eng",
     "genEdSets": [],
@@ -9400,7 +9726,9 @@
       "Winter",
       "Summer"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_MEEN_272"
+    ],
     "concurrentPrereqs": [],
     "category": "Eng",
     "genEdSets": [],
@@ -9423,7 +9751,9 @@
     "termsTaught": [
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_MEEN_312"
+    ],
     "concurrentPrereqs": [],
     "category": "Eng",
     "genEdSets": [],
@@ -9446,7 +9776,9 @@
     "termsTaught": [
       "Fall"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_MEEN_312"
+    ],
     "concurrentPrereqs": [],
     "category": "Eng",
     "genEdSets": [],
@@ -9470,7 +9802,9 @@
     "termsTaught": [
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_MEEN_321"
+    ],
     "concurrentPrereqs": [],
     "category": "Eng",
     "genEdSets": [],
@@ -9494,7 +9828,9 @@
     "termsTaught": [
       "Spring"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_MEEN_321"
+    ],
     "concurrentPrereqs": [],
     "category": "Eng",
     "genEdSets": [],
@@ -9517,7 +9853,9 @@
     "termsTaught": [
       "Fall"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_MEEN_321"
+    ],
     "concurrentPrereqs": [],
     "category": "Eng",
     "genEdSets": [],
@@ -9542,7 +9880,10 @@
     "termsTaught": [
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_MEEN_312",
+      "crawled_MEEN_321"
+    ],
     "concurrentPrereqs": [],
     "category": "Eng",
     "genEdSets": [],
@@ -9708,7 +10049,9 @@
     "termsTaught": [
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_MEEN_372"
+    ],
     "concurrentPrereqs": [],
     "category": "Eng",
     "genEdSets": [],
@@ -10063,7 +10406,9 @@
     "termsTaught": [
       "Fall"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_MEEN_312"
+    ],
     "concurrentPrereqs": [],
     "category": "Eng",
     "genEdSets": [],
@@ -10086,7 +10431,9 @@
     "termsTaught": [
       "Fall"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_MEEN_312"
+    ],
     "concurrentPrereqs": [],
     "category": "Eng",
     "genEdSets": [],
@@ -10109,7 +10456,10 @@
     "termsTaught": [
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_MEEN_510",
+      "crawled_MEEN_512"
+    ],
     "concurrentPrereqs": [],
     "category": "Eng",
     "genEdSets": [],
@@ -10132,7 +10482,9 @@
     "termsTaught": [
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_MEEN_321"
+    ],
     "concurrentPrereqs": [],
     "category": "Eng",
     "genEdSets": [],
@@ -10273,7 +10625,9 @@
     "termsTaught": [
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_ECEN_483"
+    ],
     "concurrentPrereqs": [],
     "category": "Eng",
     "genEdSets": [],
@@ -10319,7 +10673,9 @@
     "termsTaught": [
       "Fall"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_MEEN_372"
+    ],
     "concurrentPrereqs": [],
     "category": "Eng",
     "genEdSets": [],
@@ -10342,7 +10698,9 @@
     "termsTaught": [
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_MEEN_340"
+    ],
     "concurrentPrereqs": [],
     "category": "Eng",
     "genEdSets": [],
@@ -10366,7 +10724,10 @@
     "termsTaught": [
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_MEEN_312",
+      "crawled_MEEN_340"
+    ],
     "concurrentPrereqs": [],
     "category": "Eng",
     "genEdSets": [],
@@ -10488,7 +10849,9 @@
     "termsTaught": [
       "Fall"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_MEEN_372"
+    ],
     "concurrentPrereqs": [],
     "category": "Eng",
     "genEdSets": [],
@@ -10609,7 +10972,9 @@
     "termsTaught": [
       "Fall"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_MEEN_273"
+    ],
     "concurrentPrereqs": [],
     "category": "Eng",
     "genEdSets": [],
@@ -10656,7 +11021,9 @@
     "termsTaught": [
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_MEEN_382"
+    ],
     "concurrentPrereqs": [],
     "category": "Eng",
     "genEdSets": [],
@@ -10775,7 +11142,9 @@
       "Fall",
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_MEEN_476"
+    ],
     "concurrentPrereqs": [],
     "category": "Eng",
     "genEdSets": [],
@@ -10818,7 +11187,7 @@
     "deptCode": "ME EN",
     "typicalYear": "Senior",
     "credits": 18,
-    "topic": "Topics in Mechanical Design",
+    "topic": "Advanced Dynamics",
     "termsTaught": [
       "Fall",
       "Winter"
@@ -10833,7 +11202,7 @@
     "subjectCategories": [
       "Numerical Methods & Simulation"
     ],
-    "description": "ME EN 595R - 300+ Level Course from BYU Catalog.",
+    "description": "ME EN 595R - BYU Catalog.",
     "source": "BYU Catalog Crawler"
   },
   {
@@ -11172,7 +11541,9 @@
     "termsTaught": [
       "Fall"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_MEEN_382"
+    ],
     "concurrentPrereqs": [],
     "category": "Eng",
     "genEdSets": [],
@@ -11313,7 +11684,9 @@
     "termsTaught": [
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_MFGEN_381"
+    ],
     "concurrentPrereqs": [],
     "category": "Eng",
     "genEdSets": [],
@@ -11336,7 +11709,9 @@
     "termsTaught": [
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_MFGEN_381"
+    ],
     "concurrentPrereqs": [],
     "category": "Eng",
     "genEdSets": [],
@@ -11434,7 +11809,9 @@
     "termsTaught": [
       "Fall"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_MEEN_272"
+    ],
     "concurrentPrereqs": [],
     "category": "Eng",
     "genEdSets": [],
@@ -11457,7 +11834,9 @@
     "termsTaught": [
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_MFGEN_431"
+    ],
     "concurrentPrereqs": [],
     "category": "Eng",
     "genEdSets": [],
@@ -11504,7 +11883,9 @@
     "termsTaught": [
       "Fall"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_MFGEN_481"
+    ],
     "concurrentPrereqs": [],
     "category": "Eng",
     "genEdSets": [],
@@ -11540,6 +11921,153 @@
     ],
     "description": "Students will develop an understanding of a timely topic in manufacturing engineering.",
     "source": "BYU Catalog Crawler"
+  },
+  {
+    "classId": "crawled_MMBIO_194",
+    "classNumber": "194",
+    "deptCode": "MMBIO",
+    "typicalYear": "Sophomore",
+    "credits": 3,
+    "topic": "Phage Hunters: Discovery",
+    "termsTaught": [
+      "Fall"
+    ],
+    "prereqs": [],
+    "concurrentPrereqs": [],
+    "category": "EMSB",
+    "genEdSets": [],
+    "substitutionAllowed": true,
+    "substitutionClassIds": [],
+    "abetCategory": "Sci",
+    "subjectCategories": [
+      "Biomedical & Biological Engineering",
+      "Materials & Nanoscience"
+    ],
+    "description": "Phage isolation and characterization.",
+    "source": "BYU Catalog Crawler (Prerequisite)"
+  },
+  {
+    "classId": "crawled_MMBIO_195",
+    "classNumber": "195",
+    "deptCode": "MMBIO",
+    "typicalYear": "Sophomore",
+    "credits": 3,
+    "topic": "Phage Hunters: Comparative Genomics",
+    "termsTaught": [
+      "Winter"
+    ],
+    "prereqs": [],
+    "concurrentPrereqs": [],
+    "category": "EMSB",
+    "genEdSets": [],
+    "substitutionAllowed": true,
+    "substitutionClassIds": [],
+    "abetCategory": "Sci",
+    "subjectCategories": [
+      "Biomedical & Biological Engineering"
+    ],
+    "description": "Phage genome annotation.  Focus on experimental design and data analysis.",
+    "source": "BYU Catalog Crawler (Prerequisite)"
+  },
+  {
+    "classId": "crawled_MMBIO_221",
+    "classNumber": "221",
+    "deptCode": "MMBIO",
+    "typicalYear": "Sophomore",
+    "credits": 3,
+    "topic": "General Microbiology",
+    "termsTaught": [
+      "Fall",
+      "Winter"
+    ],
+    "prereqs": [],
+    "concurrentPrereqs": [],
+    "category": "EMSB",
+    "genEdSets": [],
+    "substitutionAllowed": true,
+    "substitutionClassIds": [],
+    "abetCategory": "Sci",
+    "subjectCategories": [
+      "Semiconductors & Microelectronics",
+      "Biomedical & Biological Engineering"
+    ],
+    "description": "Microbial world, emphasizing communicable diseases, their causes and control.",
+    "source": "BYU Catalog Crawler (Prerequisite)"
+  },
+  {
+    "classId": "crawled_MMBIO_222",
+    "classNumber": "222",
+    "deptCode": "MMBIO",
+    "typicalYear": "Sophomore",
+    "credits": 1,
+    "topic": "General Microbiology Laboratory",
+    "termsTaught": [
+      "Fall",
+      "Winter",
+      "Spring"
+    ],
+    "prereqs": [],
+    "concurrentPrereqs": [],
+    "category": "EMSB",
+    "genEdSets": [],
+    "substitutionAllowed": true,
+    "substitutionClassIds": [],
+    "abetCategory": "Sci",
+    "subjectCategories": [
+      "Semiconductors & Microelectronics",
+      "Biomedical & Biological Engineering"
+    ],
+    "description": "MMBIO 222 - BYU Catalog.",
+    "source": "BYU Catalog Crawler (Prerequisite)"
+  },
+  {
+    "classId": "crawled_MMBIO_241",
+    "classNumber": "241",
+    "deptCode": "MMBIO",
+    "typicalYear": "Sophomore",
+    "credits": 1,
+    "topic": "Molecular and Cellular Biology Laboratory",
+    "termsTaught": [
+      "Fall",
+      "Winter"
+    ],
+    "prereqs": [],
+    "concurrentPrereqs": [],
+    "category": "EMSB",
+    "genEdSets": [],
+    "substitutionAllowed": true,
+    "substitutionClassIds": [],
+    "abetCategory": "Sci",
+    "subjectCategories": [
+      "Biomedical & Biological Engineering"
+    ],
+    "description": "Molecular and cellular biology techniques laboratory.",
+    "source": "BYU Catalog Crawler (Prerequisite)"
+  },
+  {
+    "classId": "crawled_MMBIO_261",
+    "classNumber": "261",
+    "deptCode": "MMBIO",
+    "typicalYear": "Sophomore",
+    "credits": 3,
+    "topic": "Infection and Immunity",
+    "termsTaught": [
+      "Fall",
+      "Winter",
+      "Spring"
+    ],
+    "prereqs": [],
+    "concurrentPrereqs": [],
+    "category": "EMSB",
+    "genEdSets": [],
+    "substitutionAllowed": true,
+    "substitutionClassIds": [],
+    "abetCategory": "Sci",
+    "subjectCategories": [
+      "Biomedical & Biological Engineering"
+    ],
+    "description": "Principles of infectious organisms (principally bacteria and viruses), the diseases they cause, and the role of host immune responses in health and disease.",
+    "source": "BYU Catalog Crawler (Prerequisite)"
   },
   {
     "classId": "crawled_MMBIO_360",
@@ -11598,7 +12126,9 @@
     "termsTaught": [
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_MMBIO_261"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -11621,7 +12151,10 @@
     "termsTaught": [
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_MMBIO_241",
+      "crawled_MMBIO_261"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -11669,7 +12202,9 @@
       "Fall",
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_PWS_340"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -11694,7 +12229,10 @@
       "Fall",
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_MMBIO_194",
+      "crawled_MMBIO_195"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -11812,7 +12350,9 @@
     "termsTaught": [
       "Fall"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_MMBIO_261"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -11836,7 +12376,9 @@
     "termsTaught": [
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_MMBIO_261"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -11882,7 +12424,10 @@
     "termsTaught": [
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_MMBIO_241",
+      "crawled_PWS_340"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -11928,7 +12473,9 @@
     "termsTaught": [
       "Fall"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_MMBIO_261"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -11998,7 +12545,10 @@
     "termsTaught": [
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_MMBIO_241",
+      "crawled_MMBIO_441"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -12046,7 +12596,9 @@
       "Fall",
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_MMBIO_261"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -12070,7 +12622,9 @@
       "Fall",
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_MMBIO_261"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -12263,7 +12817,10 @@
       "Fall",
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_MMBIO_406",
+      "crawled_MMBIO_409"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -12419,6 +12976,103 @@
     "source": "BYU Catalog Crawler"
   },
   {
+    "classId": "crawled_NDFS_100",
+    "classNumber": "100",
+    "deptCode": "NDFS",
+    "typicalYear": "Sophomore",
+    "credits": 3,
+    "topic": "Essentials of Human Nutrition",
+    "termsTaught": [
+      "Fall",
+      "Winter"
+    ],
+    "prereqs": [],
+    "concurrentPrereqs": [],
+    "category": "EMSB",
+    "genEdSets": [],
+    "substitutionAllowed": true,
+    "substitutionClassIds": [],
+    "abetCategory": "Sci",
+    "subjectCategories": [
+      "Computation & Data Science"
+    ],
+    "description": "Food-oriented study of nutritional facts and principles as a basis for dietary choices; consequences of choices; scientifically examining controversial topics.",
+    "source": "BYU Catalog Crawler (Prerequisite)"
+  },
+  {
+    "classId": "crawled_NDFS_200",
+    "classNumber": "200",
+    "deptCode": "NDFS",
+    "typicalYear": "Sophomore",
+    "credits": 3,
+    "topic": "Nutrient Metabolism",
+    "termsTaught": [
+      "Fall",
+      "Winter"
+    ],
+    "prereqs": [],
+    "concurrentPrereqs": [],
+    "category": "EMSB",
+    "genEdSets": [],
+    "substitutionAllowed": true,
+    "substitutionClassIds": [],
+    "abetCategory": "Sci",
+    "subjectCategories": [
+      "Materials & Nanoscience"
+    ],
+    "description": "Chemical structures of nutrients, their food sources, requirements, digestion, absorption, transport, metabolism, functions, storage and excretion; metabolic consequences of nutrient deficiencies, interactions, imbalances, and toxicities.",
+    "source": "BYU Catalog Crawler (Prerequisite)"
+  },
+  {
+    "classId": "crawled_NDFS_250",
+    "classNumber": "250",
+    "deptCode": "NDFS",
+    "typicalYear": "Sophomore",
+    "credits": 3,
+    "topic": "Essentials of Food Science",
+    "termsTaught": [
+      "Fall",
+      "Winter"
+    ],
+    "prereqs": [],
+    "concurrentPrereqs": [],
+    "category": "EMSB",
+    "genEdSets": [],
+    "substitutionAllowed": true,
+    "substitutionClassIds": [],
+    "abetCategory": "Sci",
+    "subjectCategories": [
+      "Semiconductors & Microelectronics",
+      "Biomedical & Biological Engineering"
+    ],
+    "description": "Overview of food science, including chemical, physical and microbiological principles related to food processing, storage, and utilization.  Current issues in food science.",
+    "source": "BYU Catalog Crawler (Prerequisite)"
+  },
+  {
+    "classId": "crawled_NDFS_251",
+    "classNumber": "251",
+    "deptCode": "NDFS",
+    "typicalYear": "Sophomore",
+    "credits": 1,
+    "topic": "Essentials of Food Science Laboratory",
+    "termsTaught": [
+      "Fall",
+      "Winter"
+    ],
+    "prereqs": [],
+    "concurrentPrereqs": [],
+    "category": "EMSB",
+    "genEdSets": [],
+    "substitutionAllowed": true,
+    "substitutionClassIds": [],
+    "abetCategory": "Sci",
+    "subjectCategories": [
+      "Computation & Data Science"
+    ],
+    "description": "Laboratory experience in the chemistry of changes occurring during food processing, storage, and utilization.",
+    "source": "BYU Catalog Crawler (Prerequisite)"
+  },
+  {
     "classId": "crawled_NDFS_300",
     "classNumber": "300",
     "deptCode": "NDFS",
@@ -12453,7 +13107,10 @@
       "Winter",
       "Spring"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_CELL_305",
+      "crawled_NDFS_100"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -12476,7 +13133,9 @@
     "termsTaught": [
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_NDFS_200"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -12569,7 +13228,10 @@
     "termsTaught": [
       "Fall"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_MMBIO_221",
+      "crawled_MMBIO_222"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -12618,7 +13280,10 @@
     "termsTaught": [
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_NDFS_250",
+      "crawled_NDFS_251"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -12688,7 +13353,9 @@
     "termsTaught": [
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_NDFS_100"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -12731,7 +13398,7 @@
     "deptCode": "NDFS",
     "typicalYear": "Junior",
     "credits": 9,
-    "topic": "Academic Internship in Nutritional Science",
+    "topic": "Academic Internship in Food Science",
     "termsTaught": [
       "Fall",
       "Winter"
@@ -12746,7 +13413,7 @@
     "subjectCategories": [
       "Computation & Data Science"
     ],
-    "description": "On- or off-campus work experience sponsored by industrial, government, or academic institutions.",
+    "description": "Off-campus work experience sponsored by industrial, government, or academic institutions.",
     "source": "BYU Catalog Crawler"
   },
   {
@@ -12805,7 +13472,10 @@
     "termsTaught": [
       "Fall"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_NDFS_100",
+      "crawled_NDFS_200"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -12828,7 +13498,11 @@
     "termsTaught": [
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_CELL_220",
+      "crawled_CELL_305",
+      "crawled_NDFS_200"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -12851,7 +13525,10 @@
     "termsTaught": [
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_CELL_305",
+      "crawled_NDFS_200"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -12922,7 +13599,9 @@
     "termsTaught": [
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_NDFS_374"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -12969,7 +13648,10 @@
     "termsTaught": [
       "Fall"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_NDFS_374",
+      "crawled_NDFS_445"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -12992,7 +13674,9 @@
     "termsTaught": [
       "Fall"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_NDFS_445"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -13015,7 +13699,10 @@
     "termsTaught": [
       "Fall"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_NDFS_250",
+      "crawled_NDFS_251"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -13038,7 +13725,10 @@
     "termsTaught": [
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_NDFS_250",
+      "crawled_NDFS_251"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -13061,7 +13751,11 @@
     "termsTaught": [
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_NDFS_361",
+      "crawled_NDFS_362",
+      "crawled_NDFS_462"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -13084,7 +13778,11 @@
     "termsTaught": [
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_NDFS_356",
+      "crawled_NDFS_440",
+      "crawled_NDFS_458"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -13223,7 +13921,9 @@
     "termsTaught": [
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_NDFS_435"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -13310,6 +14010,129 @@
     "source": "BYU Catalog Crawler"
   },
   {
+    "classId": "crawled_PWS_100",
+    "classNumber": "100",
+    "deptCode": "PWS",
+    "typicalYear": "Sophomore",
+    "credits": 3,
+    "topic": "Plants in the Environment",
+    "termsTaught": [
+      "Fall",
+      "Winter"
+    ],
+    "prereqs": [],
+    "concurrentPrereqs": [],
+    "category": "EMSB",
+    "genEdSets": [],
+    "substitutionAllowed": true,
+    "substitutionClassIds": [],
+    "abetCategory": "Sci",
+    "subjectCategories": [
+      "Energy & Environmental Engineering"
+    ],
+    "description": "Introduction to principles of plant function and diversity.",
+    "source": "BYU Catalog Crawler (Prerequisite)"
+  },
+  {
+    "classId": "crawled_PWS_103",
+    "classNumber": "103",
+    "deptCode": "PWS",
+    "typicalYear": "Sophomore",
+    "credits": 3,
+    "topic": "Residential Landscape Design",
+    "termsTaught": [
+      "Fall",
+      "Winter"
+    ],
+    "prereqs": [],
+    "concurrentPrereqs": [],
+    "category": "EMSB",
+    "genEdSets": [],
+    "substitutionAllowed": true,
+    "substitutionClassIds": [],
+    "abetCategory": "Sci",
+    "subjectCategories": [
+      "Computation & Data Science"
+    ],
+    "description": "Design and composition as applied to development of residential grounds.",
+    "source": "BYU Catalog Crawler (Prerequisite)"
+  },
+  {
+    "classId": "crawled_PWS_105",
+    "classNumber": "105",
+    "deptCode": "PWS",
+    "typicalYear": "Sophomore",
+    "credits": 2,
+    "topic": "Landscape Design Graphics",
+    "termsTaught": [
+      "Winter"
+    ],
+    "prereqs": [
+      "crawled_PWS_103"
+    ],
+    "concurrentPrereqs": [],
+    "category": "EMSB",
+    "genEdSets": [],
+    "substitutionAllowed": true,
+    "substitutionClassIds": [],
+    "abetCategory": "Sci",
+    "subjectCategories": [
+      "Computation & Data Science"
+    ],
+    "description": "Communication through descriptive drawing and professional plan graphics:  plan views, elevation, color, and computer-aided design.",
+    "source": "BYU Catalog Crawler (Prerequisite)"
+  },
+  {
+    "classId": "crawled_PWS_282",
+    "classNumber": "282",
+    "deptCode": "PWS",
+    "typicalYear": "Sophomore",
+    "credits": 3,
+    "topic": "Soil Science",
+    "termsTaught": [
+      "Fall",
+      "Winter"
+    ],
+    "prereqs": [],
+    "concurrentPrereqs": [],
+    "category": "EMSB",
+    "genEdSets": [],
+    "substitutionAllowed": true,
+    "substitutionClassIds": [],
+    "abetCategory": "Sci",
+    "subjectCategories": [
+      "Semiconductors & Microelectronics",
+      "Biomedical & Biological Engineering",
+      "Energy & Environmental Engineering"
+    ],
+    "description": "Physical, chemical and microbiological properties of soils that affect plant growth in natural, agricultural, and urban environments.",
+    "source": "BYU Catalog Crawler (Prerequisite)"
+  },
+  {
+    "classId": "crawled_PWS_283",
+    "classNumber": "283",
+    "deptCode": "PWS",
+    "typicalYear": "Sophomore",
+    "credits": 1,
+    "topic": "Soil Science Laboratory",
+    "termsTaught": [
+      "Fall",
+      "Winter"
+    ],
+    "prereqs": [],
+    "concurrentPrereqs": [],
+    "category": "EMSB",
+    "genEdSets": [],
+    "substitutionAllowed": true,
+    "substitutionClassIds": [],
+    "abetCategory": "Sci",
+    "subjectCategories": [
+      "Biomedical & Biological Engineering"
+    ],
+    "description": "Laboratory and field techniques in determining soil physical, chemical, and biological properties.",
+    "source": "BYU Catalog Crawler (Prerequisite)"
+  },
+  {
     "classId": "crawled_PWS_301",
     "classNumber": "301",
     "deptCode": "PWS",
@@ -13338,9 +14161,10 @@
     "deptCode": "PWS",
     "typicalYear": "Junior",
     "credits": 3,
-    "topic": "Soils Conservation and Resources",
+    "topic": "Soil Conservation and Management",
     "termsTaught": [
-      "Fall"
+      "Fall",
+      "Winter"
     ],
     "prereqs": [],
     "concurrentPrereqs": [],
@@ -13352,7 +14176,7 @@
     "subjectCategories": [
       "Business, Leadership & Management"
     ],
-    "description": "Taxonomy of world soils; conservation and management of agricultural, wildland, wetland, and urban soils.",
+    "description": "PWS 303 - BYU Catalog.",
     "source": "BYU Catalog Crawler"
   },
   {
@@ -13366,7 +14190,9 @@
       "Fall",
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_PWS_282"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -13438,7 +14264,9 @@
     "termsTaught": [
       "Fall"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_PWS_340"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -13742,7 +14570,9 @@
     "termsTaught": [
       "Fall"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_PWS_305"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -13793,7 +14623,9 @@
       "Fall",
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_PWS_340"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -13865,7 +14697,11 @@
     "termsTaught": [
       "Fall"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_BIO_235",
+      "crawled_PWS_103",
+      "crawled_PWS_105"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -13922,7 +14758,7 @@
     "subjectCategories": [
       "Computation & Data Science"
     ],
-    "description": "PWS 390R - 300+ Level Course from BYU Catalog.",
+    "description": "PWS 390R - BYU Catalog.",
     "source": "BYU Catalog Crawler"
   },
   {
@@ -13960,7 +14796,11 @@
     "termsTaught": [
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_PWS_100",
+      "crawled_PWS_282",
+      "crawled_PWS_283"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -14008,7 +14848,9 @@
     "termsTaught": [
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_BIO_350"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -14218,7 +15060,9 @@
     "termsTaught": [
       "Fall"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_PWS_340"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -14266,7 +15110,10 @@
     "termsTaught": [
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_PWS_305",
+      "crawled_PWS_365"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -14314,7 +15161,9 @@
       "Fall",
       "Winter"
     ],
-    "prereqs": [],
+    "prereqs": [
+      "crawled_PWS_282"
+    ],
     "concurrentPrereqs": [],
     "category": "EMSB",
     "genEdSets": [],
@@ -14357,7 +15206,7 @@
     "deptCode": "PWS",
     "typicalYear": "Senior",
     "credits": 6,
-    "topic": "Environmental Science Field Techniques",
+    "topic": "Plant ID / URME Team",
     "termsTaught": [
       "Fall",
       "Winter"
@@ -14370,9 +15219,9 @@
     "substitutionClassIds": [],
     "abetCategory": "Sci",
     "subjectCategories": [
-      "Energy & Environmental Engineering"
+      "Business, Leadership & Management"
     ],
-    "description": "PWS 494R - 300+ Level Course from BYU Catalog.",
+    "description": "Plant ID techniques and and rangeland ecology principles-methods for identifying 200 common rangeland plant species in preparation for the plant identification contest at the Society of Rangeland Management, and fundamentals of rangeland ecology in preparation for the Undergraduate Range Management Exam.",
     "source": "BYU Catalog Crawler"
   },
   {
@@ -14777,7 +15626,7 @@
     "subjectCategories": [
       "Computation & Data Science"
     ],
-    "description": "PWS 598R - 300+ Level Course from BYU Catalog.",
+    "description": "PWS 598R - BYU Catalog.",
     "source": "BYU Catalog Crawler"
   },
   {
@@ -15625,7 +16474,7 @@
     "subjectCategories": [
       "Computation & Data Science"
     ],
-    "description": "STAT 591R - 300+ Level Course from BYU Catalog.",
+    "description": "STAT 591R - BYU Catalog.",
     "source": "BYU Catalog Crawler"
   },
   {
@@ -15634,7 +16483,7 @@
     "deptCode": "STAT",
     "typicalYear": "Senior",
     "credits": 3,
-    "topic": "Biostatistical Methods.",
+    "topic": "Sampling Practicum",
     "termsTaught": [
       "Fall",
       "Winter"
@@ -15647,9 +16496,9 @@
     "substitutionClassIds": [],
     "abetCategory": "Sci",
     "subjectCategories": [
-      "Biomedical & Biological Engineering"
+      "Computation & Data Science"
     ],
-    "description": "STAT 595R - 300+ Level Course from BYU Catalog.",
+    "description": "STAT 595R - BYU Catalog.",
     "source": "BYU Catalog Crawler"
   },
   {
