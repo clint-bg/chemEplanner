@@ -1,0 +1,112 @@
+﻿ClassID,Class Number,Department Code,"Typical year taken (Freshman, Sophmore, Junior, Senior)",Credit hours,Topic,"First Taught (Fall, Winter, Spring, Summer)","Seconde Taught (Fall, Winter, Spring, Summer)",Prereq (ClassID),Current enrollment allowed (ClassID),"Category (Major, Eng, EMSB, EPSEL, Gen, Rel)","General Education Set (1, 2)","Substitution allowed? (Yes, No)",Substitution class id,"ABET Category (Eng, Sci)"
+001,170,CBE,Freshman,2,Intro mass and energy balances,Fall,Winter,,,Major,,No,,Eng
+002,191,CBE,Freshman,0.5,Chemical engineering introduction seminar,Fall,Winter,,,Major,,No,,
+003,263,CBE,Sophomore,2,Computational tools,Fall,Winter,"007, 001",,Major,,No,,Eng
+004,291,CBE,Sophomore,0.5,Career Skills,Fall,Winter,,,Major,,No,,
+005,273,CBE,Sophomore,3,Material and Energy Balances,Fall,Winter,"001, 012, 008",,Major,,No,,Eng
+006,112,MATH,Freshman,4,Calculus 1,Fall,Winter,,,Major,,No,,Sci
+007,113,MATH,Freshman,4,Calculus 2,Fall,Winter,006,,Major,,No,,Sci
+008,121,PHYS,Freshman,3,Newtonian Mechanics,Fall,Winter,,,Major,,No,,Sci
+009,302,MATH,Sophomore,4,Math for engineers,Fall,Winter,,,Major,,No,,Sci
+010,303,MATH,Sophomore,4,Math for engineers,Fall,Winter,009,,Major,,No,,Sci
+011,111,CHEM,Freshman,4,Chemistry principles 1,Fall,Winter,,,Major,,No,,Sci
+012,112,CHEM,Freshman,3,Chemistry principles 2,Fall,Winter,011,,Major,,No,,Sci
+013,285,CBE,Sophomore,0.5,Fluids lab,Winter,,"005, '017",017,Major,,No,,Eng
+014,311,CBE,Sophomore,3,"Ethics, Safety, Environment",Winter,,005,,Major,,No,,Eng
+015,345,CBE,Junior,0.5,Reactions and Materials lab,Fall,,"008, 019, 021","019, 021",Major,,No,,Eng
+016,373,CBE,Junior,3,Thermodynamics,Winter,,"033, 005",,Major,,No,,Eng
+017,374,CBE,Junior,3,Fluid mechanics,Winter,,"009, 003, 005",,Major,,No,,Eng
+018,376,CBE,Junior,3,Heat and mass transfer,Winter,,"014, 017",,Major,,No,,Eng
+019,378,CBE,Junior,3,Material science,Fall,Spring,032,,Major,,No,,Eng
+020,385,CBE,Junior,0.5,Heat and mass lab,Winter,"016, 018","016, 018","016, 018",Major,,No,,Eng
+021,386,CBE,Junior,3,Chemical reactions engineering (kinetics),Fall,,"010, 005",,Major,,No,,Eng
+022,391,CBE,Junior,1,Career skills 2,Fall,Winter,,,Major,,No,,Eng
+023,436,CBE,Senior,3,Process control,Fall,,"018, 021",,Major,,No,,Eng
+024,445,CBE,Senior,0.5,Separations and process control lab,Fall,,"023, 026","023, 026",Major,,No,,Eng
+025,451,CBE,Senior,4,Process design (capstone 1),Winter,,"019, 023, 026",,Major,,No,,Eng
+026,476,CBE,Senior,3,Separations,Fall,,"018, 016",,Major,,No,,Eng
+027,479,CBE,Senior,2,Unit operations lab,Fall,Winter,"035, 018, 021",,Major,,No,,Eng
+028,221,MMBio,Sophomore,3,micro or molecular biology,Fall,Winter,,,Gen,1,Yes,"029,030,031",Sci
+029,120,CELL,Freshman,3,Cell biology,Fall,Winter,,,Gen,1,Yes,"028,030,031",Sci
+030,130,BIO,Freshman,3,Biology,Fall,Winter,,,Gen,1,Yes,"028,029,031",Sci
+031,100,BIO,Freshman,3,"Biology, introductory",Fall,Winter,,,Gen,1,Yes,"028,029,030",Sci
+032,357,CHEM,Sophomore,3,Industrial organic chemistry,Fall,Winter,,,Major,,No,,Sci
+033,467,CHEM,Junior,3,Physical chemistry,Fall,Winter,,,Major,,No,,Sci
+034,110,ECON,Sophomore,3,Macro economics,Fall,Winter,,,Major,,No,,Sci
+035,316,WRTG,Junior,3,Technical communication,Fall,Winter,,,Major,,No,,
+036,121,STAT,Sophomore,3,Statistical Data analysis,Fall,Winter,,,Major,,No,,Sci
+037,353,CHEM,Junior,2,Organic chemistry lab,Fall,Winter,,,Major,,Yes,038,Sci
+038,464,CHEM,Senior,2,Physical chemistry lab,Fall,Winter,,,Major,,Yes,037,Sci
+039,433,CBE,Senior,3,Energy Engineering,Fall,,"016, 017, 018",,Eng,,Yes,,Eng
+040,400,CEEN,Senior,3,Advanced class in CEEN. This represents multiple classes students could take,Fall,Winter,,,Eng,,Yes,,Eng
+040,500,CEEN,Senior,3,Advanced class in CEEN. This represents multiple classes students could take,Fall,Winter,,,Eng,,Yes,,Eng
+041,541,MEEN,Senior,3,Computational Fluid Dynamics,Winter,,,,Eng,,Yes,,Eng
+042,410,CBE,Senior,3,Petroleum Engineering,Winter,,"016, 017",,Eng,,Yes,,Eng
+043,330,GEOL,Senior,3,Engineering geology,Fall,Winter,,,EMSB,,Yes,,Eng
+044,400,CBE,Senior,1,Creative Skills in engineering,Fall,,,,Eng,,Yes,,Eng
+045,481,CBE,Senior,2,Intro to semiconductor processing,"Fall, every other year",,,,Eng,,Yes,,Eng
+046,452,ECE,Senior,1,Experiments in semiconductor processing lab,Winter,,,,Eng,,Yes,,Eng
+047,450,ECE,Senior,3,Introduction to Semiconductor devices,Fall,,,,Eng,,Yes,,Eng
+048,281,PHYS,Senior,3,Solid state physics,Winter,,,,EMSB,,Yes,,Sci
+049,540,CEEN,Senior,1,Geoenvironmental Engineering,Winter,,,,Eng,,Yes,,Eng
+050,518,CBE,Senior,3,Biomedical engineering,Fall,,"017, 018",,Eng,,Yes,,Eng
+051,513,CBE,Senior,3,Molecular modeling,Winter,,,,Eng,,Yes,,Eng
+052,533,CBE,Senior,3,Transport phenomena,Winter,,"018, 010",,Eng,,Yes,,Eng
+053,536,CBE,Senior,3,Machine Learning,Winter,,023,,Eng,,Yes,,Eng
+054,541,CBE,Senior,3,Numerical methods,Winter,,"018, 010",,Eng,,Yes,,Eng
+055,412,CBE,Senior,3,Introduction to Nuclear Engineering,Winter,,"007, 012",,Eng,,Yes,,Eng
+056,351,CBE,Junior,3,Fundamentals of Biomedical Engineering,Winter,,"007, 008",,Eng,,Yes,,Eng
+057,531,CBE,Senior,3,Thermodynamics of multicomponents systems,Fall,,016,,Eng,,Yes,,Eng
+058,535,CBE,Senior,3,Kinetics and Catalysis,Fall,,021,,Eng,,Yes,,Eng
+059,481,CHEM,Senior,3,Biochemistry,Winter,,"032, 030",,EMSB,,Yes,,Sci
+060,355,NDFS,Junior,4,Food process engineering includes lab,Winter,,006,,Eng,,Yes,,Eng
+061,410,MATH,Senior,3,Introduction to numerical methods,Fall,,007,,EMSB,,Yes,,Sci
+062,510,MEEN,Senior,3,Compressible fluid flow,Fall,,017,,Eng,,Yes,,Eng
+063,199R,CBE,Junior,1,Academic Internship - for students completing and internship,Spring,Summer,,,Eng,,Yes,,
+064,300,MFGEN,Junior,3,Various topics as this represents several possible classes students could take,Fall,Winter,,,Eng,,Yes,,Eng
+065,200,CS,Junior,3,Various topics as this represents several possible classes students could take,Fall,Winter,,,Eng,,Yes,,Sci
+066,200,ACC,Junior,3,Various topics as this represents several possible classes students could take,Fall,Winter,,,EMSB,,Yes,,
+067,300,ACC,Junior,3,Various topics as this represents several possible classes students could take,Fall,Winter,,,EMSB,,Yes,,
+068,200,ENT,Junior,3,Various topics as this represents several possible classes students could take,Fall,Winter,,,EMSB,,Yes,,
+069,300,ENT,Junior,3,Various topics as this represents several possible classes students could take,Fall,Winter,,,EMSB,,Yes,,
+070,200,FIN,Junior,3,Various topics as this represents several possible classes students could take,Fall,Winter,,,EMSB,,Yes,,
+071,300,FIN,Junior,3,Various topics as this represents several possible classes students could take,Fall,Winter,,,EMSB,,Yes,,
+072,200,GSCM,Junior,3,Various topics as this represents several possible classes students could take,Fall,Winter,,,EMSB,,Yes,,
+073,300,GSCM,Junior,3,Various topics as this represents several possible classes students could take,Fall,Winter,,,EMSB,,Yes,,
+074,200,GCI,Junior,3,Various topics as this represents several possible classes students could take,Fall,Winter,,,EMSB,,Yes,,
+075,300,GCI,Junior,3,Various topics as this represents several possible classes students could take,Fall,Winter,,,EMSB,,Yes,,
+076,200,HRM,Junior,3,Various topics as this represents several possible classes students could take,Fall,Winter,,,EMSB,,Yes,,
+077,300,HRM,Junior,3,Various topics as this represents several possible classes students could take,Fall,Winter,,,EMSB,,Yes,,
+078,200,IS,Junior,3,Various topics as this represents several possible classes students could take,Fall,Winter,,,EMSB,,Yes,,
+079,300,IS,Junior,3,Various topics as this represents several possible classes students could take,Fall,Winter,,,EMSB,,Yes,,
+080,200,MKTG,Junior,3,Various topics as this represents several possible classes students could take,Fall,Winter,,,EMSB,,Yes,,
+081,300,MKTG,Junior,3,Various topics as this represents several possible classes students could take,Fall,Winter,,,EMSB,,Yes,,
+082,200,MPA,Junior,3,Various topics as this represents several possible classes students could take,Fall,Winter,,,EMSB,,Yes,,
+083,300,MPA,Junior,3,Various topics as this represents several possible classes students could take,Fall,Winter,,,EMSB,,Yes,,
+084,200,PSE,Junior,3,Various topics as this represents several possible classes students could take,Fall,Winter,,,EMSB,,Yes,,
+085,300,PSE,Junior,3,Various topics as this represents several possible classes students could take,Fall,Winter,,,EMSB,,Yes,,
+086,461,CBE,Senior,3,Capstone projects,Winter,,"023, 026",,EPSEL,,Yes,,Eng
+087,499,CBE,Senior,3,Mentored research,Fall,Winter,,,EPSEL,,Yes,,Eng
+088,495R,CBE,Senior,3,Global engineering outreach,Fall,Winter,,,EPSEL,,Yes,,Eng
+089,475,MEEN,Senior,3,Mechanical engineering capstone 1,Fall,,,,EPSEL,,Yes,,Eng
+090,476,MEEN,Senior,3,Mechanical engineering capstone 2,Winter,,,,EPSEL,,Yes,,Eng
+091,101,UNIV,Freshman,2,Gospel and College introduction principles,Fall,Winter,,,Gen,"1,2",No,,
+092,150,WRTG,Freshman,3,Introduction to writing,Fall,Winter,,,Gen,1,No,,
+093,100,AHTG,Freshman,3,American heritage,Fall,Winter,,,Gen,1,No,,
+095,100,LETT,Sophomore,3,Letters and global cultural awareness classes as part of general education to satisfy both letters and global cultural awareness at the same time,Fall,Winter,,,Gen,1,No,,
+096,100,CIV,Sophomore,3,Civilization and arts general requirements satisfied by any number of classes,Fall,Winter,,,Gen,1,No,,
+097,121,RELA,Freshman,2,The book of mormon,Fall,Winter,,,Rel,,No,,
+098,250,RELA,Sophomore,2,Christ and his gospel,Fall,Winter,,,Rel,,No,,
+099,200,RELC,Sophomore,2,Role of the eternal family in the gospel of jesus christ,Fall,Winter,,,Rel,,No,,
+100,200,REL,Sophomore,2,Religion elective,Fall,Winter,,,Rel,,No,,
+101,300,REL,Junior,2,Religion elective,Fall,Winter,,,Rel,,No,,
+102,250,REL,Sophomore,2,Religion elective,Fall,Winter,,,Rel,,No,,
+103,225,RELC,Sophomore,2,Foundations of the restoration of the gospel of Jesus Christ,Fall,Winter,,,Rel,,No,,
+104,102,UNIV,Sophomore,3,Great questions out of the best books,Fall,Winter,,,Gen,2,No,,
+105,103,UNIV,Sophomore,3,Inspired constitutional principles,Fall,Winter,,,Gen,2,No,,
+106,104,UNIV,Sophomore,3,"Faith, family, and human flourishing",Fall,Winter,,,Gen,2,No,,
+107,105,UNIV,Sophomore,3,Stewardship and the natural world,Fall,Winter,,,Gen,2,No,,
+108,106,UNIV,Sophomore,3,Numeracy and Data,Fall,Winter,,,Gen,2,No,,
+109,107,UNIV,Sophomore,3,Effective communication,Fall,Winter,,,Gen,2,No,,
+110,108,UNIV,Sophomore,3,Languages and cultures,Fall,Winter,,,Gen,2,No,,
+111,109,UNIV,Sophomore,3,"Arts, letters, and sciences",Fall,Winter,,,Gen,2,No,,
