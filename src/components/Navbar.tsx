@@ -1,9 +1,9 @@
 import React from 'react';
-import { Compass, Calendar, BookOpen, GitFork, RefreshCw, GraduationCap } from 'lucide-react';
+import { Compass, Calendar, GitFork, RefreshCw, GraduationCap, FileText } from 'lucide-react';
 
 interface NavbarProps {
-  activeTab: 'automatedPath' | 'manualPlanner' | 'electives' | 'prereqMap' | 'crawler';
-  setActiveTab: (tab: 'automatedPath' | 'manualPlanner' | 'electives' | 'prereqMap' | 'crawler') => void;
+  activeTab: 'automatedPath' | 'manualPlanner' | 'prereqMap' | 'crawler' | 'walkthrough';
+  setActiveTab: (tab: 'automatedPath' | 'manualPlanner' | 'prereqMap' | 'crawler' | 'walkthrough') => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -54,18 +54,6 @@ export const Navbar: React.FC<NavbarProps> = ({
             </button>
 
             <button
-              onClick={() => setActiveTab('electives')}
-              className={`inline-flex items-center px-3 py-2 text-xs sm:text-sm font-medium rounded-lg transition-colors ${
-                activeTab === 'electives'
-                  ? 'bg-[#002E5D] text-white shadow ring-1 ring-blue-500 font-bold'
-                  : 'text-slate-300 hover:bg-slate-800 hover:text-white'
-              }`}
-            >
-              <BookOpen className="w-4 h-4 mr-1.5" />
-              Electives
-            </button>
-
-            <button
               onClick={() => setActiveTab('prereqMap')}
               className={`inline-flex items-center px-3 py-2 text-xs sm:text-sm font-medium rounded-lg transition-colors ${
                 activeTab === 'prereqMap'
@@ -87,6 +75,18 @@ export const Navbar: React.FC<NavbarProps> = ({
             >
               <RefreshCw className="w-4 h-4 mr-1.5" />
               Catalog Crawler
+            </button>
+
+            <button
+              onClick={() => setActiveTab('walkthrough')}
+              className={`inline-flex items-center px-3 py-2 text-xs sm:text-sm font-medium rounded-lg transition-colors ${
+                activeTab === 'walkthrough'
+                  ? 'bg-[#002E5D] text-white shadow ring-1 ring-blue-500 font-bold'
+                  : 'text-slate-300 hover:bg-slate-800 hover:text-white'
+              }`}
+            >
+              <FileText className="w-4 h-4 mr-1.5" />
+              Walkthrough
             </button>
           </nav>
         </div>

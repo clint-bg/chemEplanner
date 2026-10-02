@@ -2,6 +2,122 @@ import { Course } from '../simulator/types';
 import crawledElectivesRaw from './crawledElectives.json';
 
 const STATIC_ELECTIVES: Course[] = [
+  // EXPERIENTIAL LEARNING & SENIOR THESIS (EPSEL)
+  {
+    classId: '087',
+    classNumber: '499',
+    deptCode: 'CBE',
+    typicalYear: 'Senior',
+    credits: 3,
+    topic: 'Senior Thesis (Mentored Research)',
+    termsTaught: ['Fall', 'Winter'],
+    prereqs: [],
+    concurrentPrereqs: [],
+    category: 'EPSEL',
+    genEdSets: [],
+    substitutionAllowed: true,
+    substitutionClassIds: ['086', '088', '089', '090', '063', '112'],
+    abetCategory: 'Eng',
+    subjectCategories: ['Experiential Learning & Senior Thesis (EPSEL)'],
+    description: 'Independent mentored research project culminating in a written senior thesis and oral presentation.',
+    source: 'Curriculum'
+  },
+  {
+    classId: '088',
+    classNumber: '495R',
+    deptCode: 'CBE',
+    typicalYear: 'Senior',
+    credits: 3,
+    topic: 'Special Topics in Chemical Engineering (Global Outreach)',
+    termsTaught: ['Fall', 'Winter'],
+    prereqs: [],
+    concurrentPrereqs: [],
+    category: 'EPSEL',
+    genEdSets: [],
+    substitutionAllowed: true,
+    substitutionClassIds: ['086', '087', '089', '090', '063', '112'],
+    abetCategory: 'Eng',
+    subjectCategories: ['Experiential Learning & Senior Thesis (EPSEL)'],
+    description: 'Special topics and global engineering outreach projects addressing community and international engineering needs.',
+    source: 'Curriculum'
+  },
+  {
+    classId: '063',
+    classNumber: '199R',
+    deptCode: 'CBE',
+    typicalYear: 'Junior',
+    credits: 1,
+    topic: 'Academic Internship / Mentored Project',
+    termsTaught: ['Fall', 'Winter', 'Spring', 'Summer'],
+    prereqs: [],
+    concurrentPrereqs: [],
+    category: 'EPSEL',
+    genEdSets: [],
+    substitutionAllowed: true,
+    substitutionClassIds: [],
+    abetCategory: 'Eng',
+    subjectCategories: ['Experiential Learning & Senior Thesis (EPSEL)'],
+    description: '1-credit academic internship or mentored research introductory experience taken alongside CBE 496.',
+    source: 'Curriculum'
+  },
+  {
+    classId: '112',
+    classNumber: '496',
+    deptCode: 'CBE',
+    typicalYear: 'Senior',
+    credits: 3,
+    topic: 'Senior Mentored Research Project',
+    termsTaught: ['Fall', 'Winter'],
+    prereqs: ['063'],
+    concurrentPrereqs: [],
+    category: 'EPSEL',
+    genEdSets: [],
+    substitutionAllowed: true,
+    substitutionClassIds: [],
+    abetCategory: 'Eng',
+    subjectCategories: ['Experiential Learning & Senior Thesis (EPSEL)'],
+    description: '3-credit senior mentored research project following CBE 199R internship/research.',
+    source: 'Curriculum'
+  },
+  {
+    classId: '089',
+    classNumber: '475',
+    deptCode: 'ME EN',
+    typicalYear: 'Senior',
+    credits: 3,
+    topic: 'Mechanical Engineering Capstone 1',
+    termsTaught: ['Fall'],
+    prereqs: [],
+    concurrentPrereqs: [],
+    category: 'EPSEL',
+    genEdSets: [],
+    substitutionAllowed: true,
+    substitutionClassIds: [],
+    abetCategory: 'Eng',
+    subjectCategories: ['Experiential Learning & Senior Thesis (EPSEL)'],
+    description: 'Part 1 of 2-semester combined Mechanical Engineering capstone design project (6 total credits).',
+    source: 'Curriculum'
+  },
+  {
+    classId: '090',
+    classNumber: '476',
+    deptCode: 'ME EN',
+    typicalYear: 'Senior',
+    credits: 3,
+    topic: 'Mechanical Engineering Capstone 2',
+    termsTaught: ['Winter'],
+    prereqs: ['089'],
+    concurrentPrereqs: [],
+    category: 'EPSEL',
+    genEdSets: [],
+    substitutionAllowed: true,
+    substitutionClassIds: [],
+    abetCategory: 'Eng',
+    subjectCategories: ['Experiential Learning & Senior Thesis (EPSEL)'],
+    description: 'Part 2 of 2-semester combined Mechanical Engineering capstone design project.',
+    source: 'Curriculum'
+  },
+
   // CATALYSIS & REACTION ENGINEERING
   {
     classId: '058',
@@ -538,6 +654,73 @@ const REQUIRED_MAJOR_KEYS = new Set([
   'WRTG_316', 'STAT_121', 'ECON_110'
 ]);
 
+const COURSE_LOOKUP_MAP: Record<string, string> = {
+  'MATH_112': '006', 'MATH_113': '007', 'PHYS_121': '008',
+  'MATH_302': '009', 'MATH_303': '010', 'CHEM_111': '011',
+  'CHEM_112': '012', 'CHEM_357': '032', 'CHEM_467': '033',
+  'CBE_170': '001', 'CHEN_170': '001', 'CH EN_170': '001',
+  'CBE_263': '003', 'CHEN_263': '003', 'CH EN_263': '003',
+  'CBE_273': '005', 'CHEN_273': '005', 'CH EN_273': '005',
+  'CBE_311': '014', 'CHEN_311': '014', 'CH EN_311': '014',
+  'CBE_373': '016', 'CHEN_373': '016', 'CH EN_373': '016',
+  'CBE_374': '017', 'CHEN_374': '017', 'CH EN_374': '017',
+  'CBE_376': '018', 'CHEN_376': '018', 'CH EN_376': '018',
+  'CBE_378': '019', 'CHEN_378': '019', 'CH EN_378': '019',
+  'CBE_386': '021', 'CHEN_386': '021', 'CH EN_386': '021',
+  'CBE_436': '023', 'CHEN_436': '023', 'CH EN_436': '023',
+  'CBE_476': '026', 'CHEN_476': '026', 'CH EN_476': '026',
+  'CBE_479': '027', 'CHEN_479': '027', 'CH EN_479': '027',
+  'WRTG_316': '035', 'STAT_121': '036', 'ECON_110': '034'
+};
+
+function enrichCoursePrerequisites(course: Course): Course {
+  if (course.prereqs && course.prereqs.length > 0) {
+    return course;
+  }
+
+  const foundPrereqs: string[] = [];
+  const textToScan = `${course.topic} ${course.description || ''}`.toUpperCase();
+
+  for (const [key, classId] of Object.entries(COURSE_LOOKUP_MAP)) {
+    const formattedKey = key.replace('_', ' ');
+    if (textToScan.includes(key) || textToScan.includes(formattedKey)) {
+      if (!foundPrereqs.includes(classId) && classId !== course.classId) {
+        foundPrereqs.push(classId);
+      }
+    }
+  }
+
+  if (foundPrereqs.length === 0) {
+    const dept = course.deptCode.toUpperCase();
+    const num = parseInt(course.classNumber, 10) || 0;
+
+    if (dept === 'CBE' || dept === 'CH EN' || dept === 'CHEN') {
+      if (num >= 500) {
+        foundPrereqs.push('016');
+      } else if (num >= 300) {
+        foundPrereqs.push('005');
+      }
+    } else if (dept === 'CHEM') {
+      if (num >= 300) {
+        foundPrereqs.push('012');
+      }
+    } else if (dept === 'MATH' || dept === 'STAT') {
+      if (num >= 300) {
+        foundPrereqs.push('007');
+      }
+    } else if (dept === 'PHYS' || dept === 'ME EN' || dept === 'CEEN' || dept === 'EC EN') {
+      if (num >= 300) {
+        foundPrereqs.push('008');
+      }
+    }
+  }
+
+  return {
+    ...course,
+    prereqs: foundPrereqs
+  };
+}
+
 const crawledElectives = (crawledElectivesRaw as Course[]);
 
 const existingKeys = new Set(STATIC_ELECTIVES.map(c => `${c.deptCode.replace(/\s+/g, '')}_${c.classNumber}`));
@@ -547,7 +730,7 @@ const newCrawled = crawledElectives.filter(c => !existingKeys.has(`${c.deptCode.
 const combinedElectives = [
   ...STATIC_ELECTIVES,
   ...newCrawled
-];
+].map(enrichCoursePrerequisites);
 
 export const CATEGORIZED_ELECTIVES: Course[] = combinedElectives.filter(c => {
   const key1 = `${c.deptCode}_${c.classNumber}`;

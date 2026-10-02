@@ -1,4 +1,4 @@
-﻿ClassID,Class Number,Department Code,"Typical year taken (Freshman, Sophmore, Junior, Senior)",Credit hours,Topic,"First Taught (Fall, Winter, Spring, Summer)","Seconde Taught (Fall, Winter, Spring, Summer)",Prereq (ClassID),Current enrollment allowed (ClassID),"Category (Major, Eng, EMSB, EPSEL, Gen, Rel)","General Education Set (1, 2)","Substitution allowed? (Yes, No)",Substitution class id,"ABET Category (Eng, Sci)"
+ClassID,Class Number,Department Code,"Typical year taken (Freshman, Sophmore, Junior, Senior)",Credit hours,Topic,"First Taught (Fall, Winter, Spring, Summer)","Seconde Taught (Fall, Winter, Spring, Summer)",Prereq (ClassID),Current enrollment allowed (ClassID),"Category (Major, Eng, EMSB, EPSEL, Gen, Rel)","General Education Set (1, 2)","Substitution allowed? (Yes, No)",Substitution class id,"ABET Category (Eng, Sci)"
 001,170,CBE,Freshman,2,Intro mass and energy balances,Fall,Winter,,,Major,,No,,Eng
 002,191,CBE,Freshman,0.5,Chemical engineering introduction seminar,Fall,Winter,,,Major,,No,,
 003,263,CBE,Sophomore,2,Computational tools,Fall,Winter,"007, 001",,Major,,No,,Eng
@@ -30,8 +30,8 @@
 029,120,CELL,Freshman,3,Cell biology,Fall,Winter,,,Gen,1,Yes,"028,030,031",Sci
 030,130,BIO,Freshman,3,Biology,Fall,Winter,,,Gen,1,Yes,"028,029,031",Sci
 031,100,BIO,Freshman,3,"Biology, introductory",Fall,Winter,,,Gen,1,Yes,"028,029,030",Sci
-032,357,CHEM,Sophomore,3,Industrial organic chemistry,Fall,Winter,,,Major,,No,,Sci
-033,467,CHEM,Junior,3,Physical chemistry,Fall,Winter,,,Major,,No,,Sci
+032,357,CHEM,Sophomore,3,Industrial organic chemistry,Fall,Winter,012,,Major,,No,,Sci
+033,467,CHEM,Junior,3,Physical chemistry,Fall,Winter,"009, 008",,Major,,No,,Sci
 034,110,ECON,Sophomore,3,Macro economics,Fall,Winter,,,Major,,No,,Sci
 035,316,WRTG,Junior,3,Technical communication,Fall,Winter,,,Major,,No,,
 036,121,STAT,Sophomore,3,Statistical Data analysis,Fall,Winter,,,Major,,No,,Sci

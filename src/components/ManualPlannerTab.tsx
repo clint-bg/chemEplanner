@@ -17,7 +17,32 @@ export const ManualPlannerTab: React.FC<ManualPlannerTabProps> = ({
   onToggleCompletedCourse
 }) => {
   const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState<string>('ALL');
   const [selectedTermIndex, setSelectedTermIndex] = useState<number>(0);
+
+  const getCategoryBadgeStyle = (category: string) => {
+    switch (category) {
+      case 'EMSB': return 'bg-teal-100 text-teal-900 border-teal-300';
+      case 'EPSEL': return 'bg-emerald-100 text-emerald-900 border-emerald-300';
+      case 'Rel': return 'bg-indigo-100 text-indigo-900 border-indigo-300';
+      case 'Gen': return 'bg-sky-100 text-sky-900 border-sky-300';
+      case 'Eng': return 'bg-blue-100 text-blue-900 border-blue-300';
+      case 'Major': return 'bg-slate-200 text-slate-900 border-slate-300';
+      default: return 'bg-slate-100 text-slate-800 border-slate-200';
+    }
+  };
+
+  const getCategoryLabel = (category: string) => {
+    switch (category) {
+      case 'EMSB': return 'EMSB Math/Sci';
+      case 'EPSEL': return 'EPSEL Capstone';
+      case 'Rel': return 'Religion';
+      case 'Gen': return 'Gen Ed';
+      case 'Eng': return 'Engineering Elective';
+      case 'Major': return 'Major Core';
+      default: return category;
+    }
+  };
 
   const allCoursesMap = getAllAvailableCourses();
   const allAvailableCoursesList = Array.from(allCoursesMap.values());
@@ -92,8 +117,10 @@ export const ManualPlannerTab: React.FC<ManualPlannerTabProps> = ({
 
   // Filter available courses for search drawer
   const filteredCourses = allAvailableCoursesList.filter(c => {
-    const text = `${c.deptCode} ${c.classNumber} ${c.topic}`.toLowerCase();
-    return text.includes(searchTerm.toLowerCase()) && !enrolledCourseIds.has(c.classId);
+    const text = `${c.deptCode} ${c.classNumber} ${c.topic} ${c.category}`.toLowerCase();
+    const matchesSearch = text.includes(searchTerm.toLowerCase()) && !enrolledCourseIds.has(c.classId);
+    const matchesCategory = selectedCategory === 'ALL' || c.category === selectedCategory;
+    return matchesSearch && matchesCategory;
   });
 
   return (
@@ -261,46 +288,73 @@ export const ManualPlannerTab: React.FC<ManualPlannerTabProps> = ({
               </div>
             </div>
 
-            {/* Search Input */}
-            <div className="relative">
-              <Search className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />
-              <input
-                type="text"
-                placeholder="Search course code or topic..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-9 pr-3 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-1 focus:ring-blue-500"
-              />
+            {/* Search Input & Category Filter */}
+            <div className="space-y-2">
+              <div className="relative">
+                <Search className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />
+                <input
+                  type="text"
+                  placeholder="Search course code, topic..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="w-full pl-9 pr-3 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-1 focus:ring-blue-500"
+                />
+              </div>
+
+              <select
+                value={selectedCategory}
+                onChange={(e) => setSelectedCategory(e.target.value)}
+                className="w-full text-xs font-semibold bg-slate-50 border border-slate-200 rounded-lg p-1.5 text-slate-700 focus:ring-1 focus:ring-blue-500"
+              >
+                <option value="ALL">All Categories (EMSB, EPSEL, Rel, etc.)</option>
+                <option value="EMSB">EMSB Math & Science Electives</option>
+                <option value="EPSEL">EPSEL Capstone / Thesis</option>
+                <option value="Rel">Religion Requirements</option>
+                <option value="Gen">General Education</option>
+                <option value="Eng">Engineering Electives</option>
+                <option value="Major">Major Core Courses</option>
+              </select>
             </div>
           </div>
 
           {/* Course Search List */}
-          <div className="max-h-[300px] overflow-y-auto space-y-2 pr-1 pt-1">
-            {filteredCourses.slice(0, 40).map((c) => (
-              <div
-                key={c.classId}
-                className="p-2.5 rounded-lg border border-slate-200 bg-slate-50/50 hover:bg-slate-100 hover:border-slate-300 transition flex items-center justify-between"
-              >
-                <div className="text-xs">
-                  <div className="font-bold text-slate-900 flex items-center gap-1.5">
-                    <span className="font-mono text-blue-900 bg-blue-100/80 px-1 rounded">
-                      {c.deptCode} {c.classNumber}
-                    </span>
-                    <span className="text-slate-500 font-normal">{c.credits} cr</span>
-                  </div>
-                  <div className="text-slate-700 font-medium mt-0.5 line-clamp-1">{c.topic}</div>
-                  <div className="text-[10px] text-slate-500 mt-0.5">Offered: {c.termsTaught.join(', ')}</div>
-                </div>
-
-                <button
-                  onClick={() => handleAddCourseToTerm(c, selectedTermIndex)}
-                  className="p-1.5 bg-[#002E5D] hover:bg-blue-800 text-white rounded shadow text-xs flex items-center transition"
-                  title="Add to selected term"
-                >
-                  <Plus className="w-4 h-4" />
-                </button>
+          <div className="max-h-[320px] overflow-y-auto space-y-2 pr-1 pt-1">
+            {filteredCourses.length === 0 ? (
+              <div className="text-center py-6 text-xs text-slate-400 italic">
+                No matching courses found.
               </div>
-            ))}
+            ) : (
+              filteredCourses.slice(0, 40).map((c) => (
+                <div
+                  key={c.classId}
+                  className="p-2.5 rounded-lg border border-slate-200 bg-slate-50/50 hover:bg-slate-100 hover:border-slate-300 transition flex items-center justify-between gap-2"
+                >
+                  <div className="text-xs space-y-1 min-w-0 flex-1">
+                    <div className="font-bold text-slate-900 flex items-center gap-1.5 flex-wrap">
+                      <span className="font-mono text-blue-900 bg-blue-100/80 px-1.5 py-0.5 rounded font-bold">
+                        {c.deptCode} {c.classNumber}
+                      </span>
+                      <span className="text-slate-500 font-normal">{c.credits} cr</span>
+
+                      {/* Distinct Category Badge */}
+                      <span className={`px-1.5 py-0.2 rounded text-[10px] font-bold border ${getCategoryBadgeStyle(c.category)}`}>
+                        {getCategoryLabel(c.category)}
+                      </span>
+                    </div>
+                    <div className="text-slate-700 font-medium line-clamp-1">{c.topic}</div>
+                    <div className="text-[10px] text-slate-500">Offered: {c.termsTaught.join(', ')}</div>
+                  </div>
+
+                  <button
+                    onClick={() => handleAddCourseToTerm(c, selectedTermIndex)}
+                    className="p-1.5 bg-[#002E5D] hover:bg-blue-800 text-white rounded shadow text-xs flex items-center transition shrink-0"
+                    title={`Add ${c.deptCode} ${c.classNumber} to Semester ${selectedTermIndex + 1}`}
+                  >
+                    <Plus className="w-4 h-4" />
+                  </button>
+                </div>
+              ))
+            )}
           </div>
         </div>
 
@@ -387,6 +441,11 @@ export const ManualPlannerTab: React.FC<ManualPlannerTabProps> = ({
                                   {c.deptCode} {c.classNumber}
                                 </span>
                                 <span className="text-slate-500 font-normal">{c.credits} cr</span>
+                                
+                                <span className={`px-1.5 py-0.2 rounded text-[10px] font-bold border ${getCategoryBadgeStyle(c.category)}`}>
+                                  {getCategoryLabel(c.category)}
+                                </span>
+
                                 {isCompleted && (
                                   <span className="text-[10px] font-bold text-blue-900 bg-blue-200 px-1.5 py-0.2 rounded-full border border-blue-300">
                                     Done

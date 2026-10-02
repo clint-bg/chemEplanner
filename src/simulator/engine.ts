@@ -47,15 +47,14 @@ export function isCourseOffered(c: Course, currentTerm: Term, sem: number, inclu
   return false;
 }
 
-function calculateCalendarYear(startYear: number, sequenceIndex: number): number {
-  // 4 terms per year: Fall (year), Winter (year + 1), Spring (year + 1), Summer (year + 1)
-  return startYear + Math.floor((sequenceIndex + 3) / 4);
+function calculateCalendarYear(startYear: number, academicYear: number, term: Term): number {
+  return term === 'Fall' ? startYear + (academicYear - 1) : startYear + academicYear;
 }
 
 export function generateBestGraduationPath(
   targetMaxCredits = 15,
   includeSpringSummer = true,
-  selectedElectiveIds: string[] = ['058', '054', '045', '038'], // Default sample electives
+  selectedElectiveIds: string[] = ['058', '054', '053', '038', '061', '045'], // Default sample electives
   completedCourseIds: string[] = [],
   disabledSpringSummerTerms: string[] = [] // e.g. ['Spring Year 1', 'Summer Year 1']
 ): StudentPlan {
@@ -71,15 +70,13 @@ export function generateBestGraduationPath(
 
   // Add Major & Gen Ed & Core Religion courses
   for (const c of INITIAL_CURRICULUM_COURSES) {
-    if (!completed.has(c.classId)) {
-      neededCoursesMap.set(c.classId, c);
-    }
+    neededCoursesMap.set(c.classId, c);
   }
 
   // Add selected electives
   for (const elId of selectedElectiveIds) {
     const elCourse = allCoursesMap.get(elId);
-    if (elCourse && !completed.has(elCourse.classId)) {
+    if (elCourse) {
       neededCoursesMap.set(elCourse.classId, elCourse);
     }
   }
@@ -89,7 +86,7 @@ export function generateBestGraduationPath(
 
   let termIndexInSequence = 0;
   const MAX_SEQUENCE_TERMS = 28; // Safety loop cap
-  const startYear = 2024;
+  const startYear = new Date().getFullYear(); // Starts at 2026
 
   let completedRelCredits = 0;
   let completedEngCredits = 0;
@@ -98,8 +95,8 @@ export function generateBestGraduationPath(
 
   while (neededCoursesMap.size > 0 && termIndexInSequence < MAX_SEQUENCE_TERMS) {
     const currentTerm = termsSequence[termIndexInSequence % termsSequence.length];
-    const calendarYear = calculateCalendarYear(startYear, termIndexInSequence);
     const academicYear = Math.floor(termIndexInSequence / 4) + 1;
+    const calendarYear = calculateCalendarYear(startYear, academicYear, currentTerm);
     const termKey = `${currentTerm} Year ${academicYear}`;
 
     const isSpringSummerTerm = currentTerm === 'Spring' || currentTerm === 'Summer';
@@ -222,18 +219,64 @@ export function generateBestGraduationPath(
     termIndexInSequence++;
   }
 
-  // Determine estimated graduation term from the last non-empty term
-  let estimatedGraduationTerm = 'Winter 2028';
-  if (schedule.length > 0) {
-    const lastTermObj = schedule[schedule.length - 1];
-    let lastSeqIdx = 0;
-    for (let i = 0; i < termIndexInSequence; i++) {
-      const termName = termsSequence[i % termsSequence.length];
-      if (termName === lastTermObj.term) {
-        lastSeqIdx = i;
+  // Post-pass: Enforce minimum 12 credit hours for all Fall/Winter semesters prior to the final graduation semester
+  if (schedule.length > 1) {
+    const finalTermIdx = schedule.length - 1;
+
+    for (let i = 0; i < finalTermIdx; i++) {
+      const termPlan = schedule[i];
+
+      // Only enforce 12+ cr full-time minimum on primary Fall/Winter semesters before the last term
+      if (termPlan.term === 'Fall' || termPlan.term === 'Winter') {
+        let attempts = 0;
+
+        while (termPlan.totalCredits < 12 && attempts < 10) {
+          attempts++;
+
+          // 1. First, attempt to pull courses forward from future terms (j > i)
+          let pulledFromFuture = false;
+          for (let j = i + 1; j <= finalTermIdx; j++) {
+            const futureTerm = schedule[j];
+            for (let cIdx = 0; cIdx < futureTerm.courses.length; cIdx++) {
+              const candidate = futureTerm.courses[cIdx];
+
+              // Check if candidate prerequisites were completed prior to term i
+              const priorCompleted = new Set<string>(completedCourseIds);
+              for (let k = 0; k < i; k++) {
+                schedule[k].courses.forEach(c => priorCompleted.add(c.classId));
+              }
+
+              const prereqsMet = candidate.prereqs.every(reqId => priorCompleted.has(reqId));
+              const offeredInTerm = isCourseOffered(candidate, termPlan.term, termPlan.semesterNumber, true);
+              const fitsInCap = termPlan.totalCredits + candidate.credits <= targetMaxCredits + 0.5;
+
+              if (prereqsMet && offeredInTerm && fitsInCap) {
+                // Move course from futureTerm to termPlan
+                futureTerm.courses.splice(cIdx, 1);
+                futureTerm.totalCredits -= candidate.credits;
+
+                termPlan.courses.push(candidate);
+                termPlan.totalCredits += candidate.credits;
+                pulledFromFuture = true;
+                break;
+              }
+            }
+            if (pulledFromFuture) break;
+          }
+
+          if (!pulledFromFuture) {
+            break; // Stop if no further scheduled courses can be pulled forward
+          }
+        }
       }
     }
-    const finalYear = calculateCalendarYear(startYear, lastSeqIdx);
+  }
+
+  // Determine estimated graduation term from the last non-empty term
+  let estimatedGraduationTerm = 'Winter 2031';
+  if (schedule.length > 0) {
+    const lastTermObj = schedule[schedule.length - 1];
+    const finalYear = calculateCalendarYear(startYear, lastTermObj.year, lastTermObj.term);
     estimatedGraduationTerm = `${lastTermObj.term} ${finalYear}`;
   }
 

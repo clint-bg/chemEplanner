@@ -12,6 +12,7 @@ export type SubjectCategory =
   | 'Energy & Environmental Engineering'
   | 'Energy & Transport Phenomena'
   | 'Materials & Nanoscience'
+  | 'Experiential Learning & Senior Thesis (EPSEL)'
   | 'Business, Leadership & Management';
 
 export interface Course {

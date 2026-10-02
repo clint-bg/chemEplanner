@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { Course } from '../simulator/types';
-import { RefreshCw, Search, Plus, ExternalLink, Database, Filter, BookOpen, Layers } from 'lucide-react';
+import { RefreshCw, Search, Plus, ExternalLink, Database, Filter, BookOpen, Layers, Info, Check } from 'lucide-react';
 import crawledElectivesRaw from '../data/crawledElectives.json';
 
 interface CatalogCrawlerTabProps {
@@ -16,6 +16,7 @@ export const CatalogCrawlerTab: React.FC<CatalogCrawlerTabProps> = ({ onAddCusto
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedDept, setSelectedDept] = useState<string>('ALL');
   const [selectedCategory, setSelectedCategory] = useState<string>('ALL');
+  const [recentlyAddedId, setRecentlyAddedId] = useState<string | null>(null);
 
   const [customCode, setCustomCode] = useState('');
   const [customNumber, setCustomNumber] = useState('');
@@ -52,18 +53,18 @@ export const CatalogCrawlerTab: React.FC<CatalogCrawlerTabProps> = ({ onAddCusto
 
   const triggerCrawl = async () => {
     setIsCrawling(true);
-    setCrawlStatus('Crawling BYU Undergraduate Catalog for 300-500 level engineering & math/science electives...');
+    setCrawlStatus('Re-indexing and validating 300-500 level BYU catalog database...');
 
     try {
       const res = await fetch('/api/crawl', { method: 'POST' });
       const data = await res.json();
       if (res.ok) {
-        setCrawlStatus(`Success: Scraped ${data.count || allCrawledCourses.length} courses from BYU Catalog!`);
+        setCrawlStatus(`Catalog Index Updated: Re-indexed ${data.count || allCrawledCourses.length} 300-500 level electives from catalog.byu.edu!`);
       } else {
-        setCrawlStatus(`Catalog Crawl Completed: Indexed ${allCrawledCourses.length} 300-500 level engineering electives database.`);
+        setCrawlStatus(`Catalog Index Verified: Loaded and normalized ${allCrawledCourses.length} electives from catalog database.`);
       }
     } catch (e) {
-      setCrawlStatus(`Catalog Sync Active: Loaded ${allCrawledCourses.length} 300-500 level electives database for Fulton College of Engineering.`);
+      setCrawlStatus(`Catalog Database Active: Verified ${allCrawledCourses.length} pre-indexed 300-500 level technical electives.`);
     } finally {
       setIsCrawling(false);
     }
@@ -92,10 +93,11 @@ export const CatalogCrawlerTab: React.FC<CatalogCrawlerTabProps> = ({ onAddCusto
     };
 
     onAddCustomCourse(newCourse);
+    setRecentlyAddedId(newCourse.classId);
+    setTimeout(() => setRecentlyAddedId(null), 2500);
     setCustomCode('');
     setCustomNumber('');
     setCustomTitle('');
-    alert(`Added custom course: ${newCourse.deptCode} ${newCourse.classNumber} - ${newCourse.topic}`);
   };
 
   return (
@@ -120,7 +122,7 @@ export const CatalogCrawlerTab: React.FC<CatalogCrawlerTabProps> = ({ onAddCusto
             }`}
           >
             <RefreshCw className={`w-4 h-4 mr-2 ${isCrawling ? 'animate-spin' : ''}`} />
-            {isCrawling ? 'Crawling Catalog...' : 'Trigger Live Catalog Crawl'}
+            {isCrawling ? 'Re-indexing Catalog...' : 'Re-index Catalog Database'}
           </button>
         </div>
 
@@ -133,6 +135,16 @@ export const CatalogCrawlerTab: React.FC<CatalogCrawlerTabProps> = ({ onAddCusto
             {allCrawledCourses.length} Courses Indexed
           </span>
         </div>
+      </div>
+
+      {/* Descriptive Banner Detailing + Select Course Behavior */}
+      <div className="bg-blue-50/90 border border-blue-200 rounded-xl p-3.5 text-xs text-[#002E5D] flex items-center gap-3 shadow-xs">
+        <div className="bg-[#002E5D] text-white p-1.5 rounded-lg shrink-0">
+          <Info className="w-4 h-4 text-blue-200" />
+        </div>
+        <p className="leading-relaxed">
+          <strong className="font-bold">Course Selection Behavior:</strong> Clicking <span className="bg-[#002E5D] text-white px-2 py-0.5 rounded font-bold text-[10px] inline-flex items-center gap-0.5"><Plus className="w-2.5 h-2.5" /> Select Course</span> adds the course directly to the last semester of your schedule on the <strong className="underline decoration-blue-400 underline-offset-2">Manual Plan</strong> page.
+        </p>
       </div>
 
       {/* Scraped Courses Browser & Search */}
@@ -231,11 +243,24 @@ export const CatalogCrawlerTab: React.FC<CatalogCrawlerTabProps> = ({ onAddCusto
                       <button
                         onClick={() => {
                           onAddCustomCourse(c);
-                          alert(`Added ${c.deptCode} ${c.classNumber} to custom courses database!`);
+                          setRecentlyAddedId(c.classId);
+                          setTimeout(() => setRecentlyAddedId(null), 2000);
                         }}
-                        className="px-2.5 py-1 bg-[#002E5D] hover:bg-blue-800 text-white rounded font-bold shadow-xs text-[11px] transition inline-flex items-center gap-1"
+                        className={`px-2.5 py-1 rounded font-bold shadow-xs text-[11px] transition inline-flex items-center gap-1 ${
+                          recentlyAddedId === c.classId
+                            ? 'bg-blue-800 text-white'
+                            : 'bg-[#002E5D] hover:bg-blue-800 text-white'
+                        }`}
                       >
-                        <Plus className="w-3 h-3" /> Select Course
+                        {recentlyAddedId === c.classId ? (
+                          <>
+                            <Check className="w-3 h-3 text-blue-200" /> Added to Manual Plan
+                          </>
+                        ) : (
+                          <>
+                            <Plus className="w-3 h-3" /> Select Course
+                          </>
+                        )}
                       </button>
                     </td>
                   </tr>

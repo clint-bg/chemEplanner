@@ -2,22 +2,22 @@ import React, { useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { BestPathGeneratorTab } from './components/BestPathGeneratorTab';
 import { ManualPlannerTab } from './components/ManualPlannerTab';
-import { ElectivesTab } from './components/ElectivesTab';
 import { PrereqMapTab } from './components/PrereqMapTab';
 import { CatalogCrawlerTab } from './components/CatalogCrawlerTab';
+import { WalkthroughTab } from './components/WalkthroughTab';
 import { Course, TermSchedule, StudentPlan } from './simulator/types';
 import { generateBestGraduationPath } from './simulator/engine';
 import { auditDegreeRequirements, getAllAvailableCourses } from './simulator/prereqChecker';
 import { GraduationCap, Award, Clock, AlertTriangle } from 'lucide-react';
 
 export const App: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<'automatedPath' | 'manualPlanner' | 'electives' | 'prereqMap' | 'crawler'>('automatedPath');
+  const [activeTab, setActiveTab] = useState<'automatedPath' | 'manualPlanner' | 'prereqMap' | 'crawler' | 'walkthrough'>('automatedPath');
 
   // Initialize schedule with default best path
-  const defaultBestPath = generateBestGraduationPath(15, false, ['058', '054', '045', '038']);
+  const defaultBestPath = generateBestGraduationPath(15, false, ['058', '054', '053', '038', '061', '045']);
   const [schedule, setSchedule] = useState<TermSchedule[]>(defaultBestPath.schedule);
   const [customCourses, setCustomCourses] = useState<Course[]>([]);
-  const [completedCourseIds, setCompletedCourseIds] = useState<Set<string>>(new Set(['001', '006', '011']));
+  const [completedCourseIds, setCompletedCourseIds] = useState<Set<string>>(new Set());
 
   const handleToggleCompletedCourse = (courseId: string) => {
     setCompletedCourseIds(prev => {
@@ -79,10 +79,11 @@ export const App: React.FC = () => {
 
   // Calculate overall graduation estimate from schedule
   const totalSemesters = schedule.length;
-  const startYear = 2024;
-  const finalYear = startYear + Math.floor((totalSemesters - 1) / 2);
-  const finalTerm = schedule[schedule.length - 1]?.term || 'Winter';
-  const graduationEstimate = `${finalTerm} ${finalYear}`;
+  const currentYear = new Date().getFullYear();
+  const lastTerm = schedule[schedule.length - 1];
+  const finalYear = lastTerm ? (lastTerm.term === 'Fall' ? currentYear + (lastTerm.year - 1) : currentYear + lastTerm.year) : currentYear + 5;
+  const finalTermName = lastTerm?.term || 'Winter';
+  const graduationEstimate = `${finalTermName} ${finalYear}`;
 
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col font-sans">
@@ -123,56 +124,63 @@ export const App: React.FC = () => {
             />
           )}
 
-          {activeTab === 'electives' && (
-            <ElectivesTab
-              onAddElectiveToSchedule={handleAddElectiveToSchedule}
-              enrolledCourseIds={enrolledCourseIds}
-              completedCourseIds={completedCourseIds}
-              onToggleCompletedCourse={handleToggleCompletedCourse}
-            />
-          )}
-
           {activeTab === 'prereqMap' && <PrereqMapTab />}
 
           {activeTab === 'crawler' && (
             <CatalogCrawlerTab onAddCustomCourse={handleAddCustomCourse} />
           )}
+
+          {activeTab === 'walkthrough' && <WalkthroughTab />}
         </div>
 
-        {/* Centered Graduation Summary Card at Bottom */}
-        <div className="mt-10 max-w-xl mx-auto w-full bg-white rounded-2xl border border-slate-200 shadow-md p-6 text-center space-y-3">
-          <div className="inline-flex items-center space-x-1.5 text-xs font-bold uppercase tracking-wider text-slate-600 bg-slate-100 px-3 py-1 rounded-full border border-slate-200">
-            <GraduationCap className="w-4 h-4 text-[#002E5D]" /> Graduation Time & Requirement Summary
-          </div>
-
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-2">
-            <div className="text-center sm:text-left">
-              <span className="text-xs text-slate-500 block font-medium">Estimated Graduation</span>
-              <span className="text-2xl font-extrabold text-[#002E5D] font-mono tracking-tight">
-                {graduationEstimate} <span className="text-xs font-semibold text-slate-500 font-sans">({totalSemesters} terms)</span>
-              </span>
+        {/* Centered Graduation Summary Card at Bottom (Hidden on Automated Path & Walkthrough tabs) */}
+        {activeTab !== 'automatedPath' && activeTab !== 'walkthrough' && (
+          <div className="mt-10 max-w-xl mx-auto w-full bg-white rounded-2xl border border-slate-200 shadow-md p-6 text-center space-y-3">
+            <div className="inline-flex items-center space-x-1.5 text-xs font-bold uppercase tracking-wider text-slate-600 bg-slate-100 px-3 py-1 rounded-full border border-slate-200">
+              <GraduationCap className="w-4 h-4 text-[#002E5D]" /> Graduation Time & Requirement Summary
             </div>
 
-            <div className="h-8 w-px bg-slate-200 hidden sm:block"></div>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-2">
+              <div className="text-center sm:text-left">
+                <span className="text-xs text-slate-500 block font-medium">Estimated Graduation</span>
+                <span className="text-2xl font-extrabold text-[#002E5D] font-mono tracking-tight">
+                  {graduationEstimate} <span className="text-xs font-semibold text-slate-500 font-sans">({totalSemesters} terms)</span>
+                </span>
+              </div>
 
-            <div>
-              <span className="text-xs text-slate-500 block font-medium mb-1">Degree Audit Status</span>
-              {audit.overallSatisfied ? (
-                <span className="inline-flex items-center text-xs font-bold text-blue-900 bg-blue-100 border border-blue-300 px-3 py-1.5 rounded-full shadow-sm">
-                  <Award className="w-4 h-4 mr-1.5 text-[#002E5D]" /> All Requirements Completed
-                </span>
-              ) : audit.overallEnrolledSatisfied ? (
-                <span className="inline-flex items-center text-xs font-bold text-blue-900 bg-blue-100 border border-blue-300 px-3 py-1.5 rounded-full shadow-sm">
-                  <Award className="w-4 h-4 mr-1.5 text-blue-700" /> Plan Meets Requirements
-                </span>
-              ) : (
-                <span className="inline-flex items-center text-xs font-bold text-amber-800 bg-amber-100 border border-amber-300 px-3 py-1.5 rounded-full shadow-sm">
-                  <Clock className="w-4 h-4 mr-1.5 text-amber-600" /> In Progress ({completedCourseIds.size} Done)
-                </span>
-              )}
+              <div className="h-8 w-px bg-slate-200 hidden sm:block"></div>
+
+              <div>
+                <span className="text-xs text-slate-500 block font-medium mb-1">Degree Audit Status</span>
+                {audit.overallSatisfied ? (
+                  <span className="inline-flex items-center text-xs font-bold text-blue-900 bg-blue-100 border border-blue-300 px-3 py-1.5 rounded-full shadow-sm">
+                    <Award className="w-4 h-4 mr-1.5 text-[#002E5D]" /> All Requirements Completed
+                  </span>
+                ) : audit.overallEnrolledSatisfied ? (
+                  <span className="inline-flex items-center text-xs font-bold text-blue-900 bg-blue-100 border border-blue-300 px-3 py-1.5 rounded-full shadow-sm">
+                    <Award className="w-4 h-4 mr-1.5 text-blue-700" /> Plan Meets Requirements
+                  </span>
+                ) : (
+                  <div className="flex flex-col items-center gap-1">
+                    <span className="inline-flex items-center text-xs font-bold text-amber-800 bg-amber-100 border border-amber-300 px-3 py-1.5 rounded-full shadow-sm">
+                      <AlertTriangle className="w-4 h-4 mr-1.5 text-amber-600" /> Degree Deficit (In Progress)
+                    </span>
+                    <span className="text-[11px] text-amber-700 font-semibold text-center">
+                      Deficit: {[
+                        audit.majorCreditsEnrolled < audit.majorCreditsRequired ? `${audit.majorCreditsRequired - audit.majorCreditsEnrolled} cr Major` : null,
+                        audit.engElectivesCreditsEnrolled < 9 ? `${9 - audit.engElectivesCreditsEnrolled} cr Eng` : null,
+                        audit.emsbCreditsEnrolled < 4 ? `${4 - audit.emsbCreditsEnrolled} cr EMSB` : null,
+                        audit.epselCreditsEnrolled < 3 ? `${3 - audit.epselCreditsEnrolled} cr EPSEL` : null,
+                        audit.genEdCreditsEnrolled < 14 ? `${14 - audit.genEdCreditsEnrolled} cr GenEd` : null,
+                        audit.religionCreditsEnrolled < 14 ? `${14 - audit.religionCreditsEnrolled} cr Religion` : null,
+                      ].filter(Boolean).join(' • ')}
+                    </span>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </main>
 
       <footer className="bg-slate-900 border-t border-slate-800 text-slate-400 py-6 text-center text-xs">
