@@ -107,7 +107,17 @@ export function generateBestGraduationPath(
 
     if (!isTermDisabled) {
       for (const [classId, course] of neededCoursesMap.entries()) {
-        const prereqsMet = course.prereqs.every(reqId => completed.has(reqId));
+        const prereqsMet = course.prereqs.every(reqId => {
+          if (completed.has(reqId)) return true;
+          if (course.concurrentPrereqs && course.concurrentPrereqs.includes(reqId)) {
+            if (termEnrolledCourses.some(c => c.classId === reqId)) return true;
+            const concurrentTarget = neededCoursesMap.get(reqId);
+            if (concurrentTarget && isCourseOffered(concurrentTarget, currentTerm, currentSemester, true)) {
+              return concurrentTarget.prereqs.every(p => completed.has(p));
+            }
+          }
+          return false;
+        });
         const offeredInTerm = isCourseOffered(course, currentTerm, currentSemester, true);
 
         if (prereqsMet && offeredInTerm) {
@@ -118,6 +128,12 @@ export function generateBestGraduationPath(
 
     // Sort eligible courses by critical path and Spring/Summer priority
     eligibleCourses.sort((a, b) => {
+      // WRTG 150 ('092') MUST be taken in Fall Year 1 or Winter Year 1
+      if (academicYear === 1 && (currentTerm === 'Fall' || currentTerm === 'Winter')) {
+        if (a.classId === '092') return -1;
+        if (b.classId === '092') return 1;
+      }
+
       if (isSpringSummerTerm) {
         // In Spring and Summer terms:
         // 1. Courses explicitly taught in Spring/Summer (like CBE 378 Material Science in Spring) -> TOP Priority!

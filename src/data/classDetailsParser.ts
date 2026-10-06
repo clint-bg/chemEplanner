@@ -500,7 +500,7 @@ export const INITIAL_CURRICULUM_COURSES: Course[] = [
     typicalYear: 'Junior',
     credits: 3,
     topic: 'Physical chemistry',
-    termsTaught: ['Fall', 'Winter'],
+    termsTaught: ['Fall'],
     prereqs: ['009', '008'],
     concurrentPrereqs: [],
     category: 'Major',

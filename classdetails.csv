@@ -31,7 +31,7 @@ ClassID,Class Number,Department Code,"Typical year taken (Freshman, Sophmore, Ju
 030,130,BIO,Freshman,3,Biology,Fall,Winter,,,Gen,1,Yes,"028,029,031",Sci
 031,100,BIO,Freshman,3,"Biology, introductory",Fall,Winter,,,Gen,1,Yes,"028,029,030",Sci
 032,357,CHEM,Sophomore,3,Industrial organic chemistry,Fall,Winter,012,,Major,,No,,Sci
-033,467,CHEM,Junior,3,Physical chemistry,Fall,Winter,"009, 008",,Major,,No,,Sci
+033,467,CHEM,Junior,3,Physical chemistry,Fall,,"009, 008",,Major,,No,,Sci
 034,110,ECON,Sophomore,3,Macro economics,Fall,Winter,,,Major,,No,,Sci
 035,316,WRTG,Junior,3,Technical communication,Fall,Winter,,,Major,,No,,
 036,121,STAT,Sophomore,3,Statistical Data analysis,Fall,Winter,,,Major,,No,,Sci
