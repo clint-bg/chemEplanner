@@ -14,7 +14,7 @@ export const App: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'automatedPath' | 'manualPlanner' | 'prereqMap' | 'crawler' | 'walkthrough'>('automatedPath');
 
   // Initialize schedule with default best path
-  const defaultBestPath = generateBestGraduationPath(15, false, ['058', '054', '053', '038', '061', '045']);
+  const defaultBestPath = generateBestGraduationPath(16, false, ['058', '054', '053', '038', '061', '045']);
   const [schedule, setSchedule] = useState<TermSchedule[]>(defaultBestPath.schedule);
   const [customCourses, setCustomCourses] = useState<Course[]>([]);
   const [completedCourseIds, setCompletedCourseIds] = useState<Set<string>>(new Set());
@@ -42,6 +42,13 @@ export const App: React.FC = () => {
   // Apply Best Path to Manual Planner
   const handleApplyPathToManualPlanner = (generatedPlan: StudentPlan) => {
     setSchedule(generatedPlan.schedule);
+    setActiveTab('manualPlanner');
+  };
+
+  // Import saved CSV plan into manual planner
+  const handleImportPlan = (importedSchedule: TermSchedule[], importedCompletedIds: Set<string>) => {
+    setSchedule(importedSchedule);
+    setCompletedCourseIds(importedCompletedIds);
     setActiveTab('manualPlanner');
   };
 
@@ -112,6 +119,7 @@ export const App: React.FC = () => {
               onApplyPathToManualPlanner={handleApplyPathToManualPlanner}
               completedCourseIds={completedCourseIds}
               onToggleCompletedCourse={handleToggleCompletedCourse}
+              onImportPlan={handleImportPlan}
             />
           )}
 
@@ -121,6 +129,7 @@ export const App: React.FC = () => {
               setSchedule={setSchedule}
               completedCourseIds={completedCourseIds}
               onToggleCompletedCourse={handleToggleCompletedCourse}
+              onImportPlan={handleImportPlan}
             />
           )}
 

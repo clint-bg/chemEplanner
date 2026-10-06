@@ -1,13 +1,16 @@
-import React, { useState, useMemo } from 'react';
-import { StudentPlan, Course, SubjectCategory } from '../simulator/types';
+import React, { useState, useMemo, useRef } from 'react';
+import { StudentPlan, Course, SubjectCategory, TermSchedule } from '../simulator/types';
 import { generateBestGraduationPath } from '../simulator/engine';
 import { CATEGORIZED_ELECTIVES } from '../data/electivesCatalog';
-import { Compass, CheckCircle2, ArrowRight, Zap, BookOpen, Sun, CalendarX, Power, Layers, Search, Filter, X, AlertTriangle } from 'lucide-react';
+import { exportPlanToCSV, parsePlanFromCSV } from '../utils/planExporter';
+import { getAllAvailableCourses } from '../simulator/prereqChecker';
+import { Compass, CheckCircle2, ArrowRight, Zap, BookOpen, Sun, CalendarX, Power, Layers, Search, Filter, X, AlertTriangle, Download, Upload, FileSpreadsheet } from 'lucide-react';
 
 interface AutomatedPathGeneratorTabProps {
   onApplyPathToManualPlanner: (plan: StudentPlan) => void;
   completedCourseIds?: Set<string>;
   onToggleCompletedCourse?: (courseId: string) => void;
+  onImportPlan?: (schedule: TermSchedule[], completedCourseIds: Set<string>) => void;
 }
 
 const AVAILABLE_SPRING_SUMMER_TERMS = [
@@ -47,11 +50,37 @@ const SUBJECT_CATEGORIES: SubjectCategory[] = [
 export const BestPathGeneratorTab: React.FC<AutomatedPathGeneratorTabProps> = ({
   onApplyPathToManualPlanner,
   completedCourseIds = new Set(),
-  onToggleCompletedCourse
+  onToggleCompletedCourse,
+  onImportPlan
 }) => {
-  const [maxCredits, setMaxCredits] = useState<number>(15);
+  const [maxCredits, setMaxCredits] = useState<number>(16);
   const [selectedElectiveIds, setSelectedElectiveIds] = useState<string[]>(['058', '054', '053', '038', '061', '045']);
   const [disabledSpringSummerTerms, setDisabledSpringSummerTerms] = useState<string[]>([]);
+
+  // CSV File Input ref
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (evt) => {
+      const text = evt.target?.result as string;
+      if (!text) return;
+      const allCoursesMap = getAllAvailableCourses();
+      const result = parsePlanFromCSV(text, allCoursesMap);
+      if (result.error) {
+        alert(`Error reading CSV file: ${result.error}`);
+        return;
+      }
+      if (onImportPlan) {
+        onImportPlan(result.schedule, result.completedCourseIds);
+      }
+    };
+    reader.readAsText(file);
+    e.target.value = '';
+  };
 
   // Filtering state for electives selection box
   const [electiveSearchQuery, setElectiveSearchQuery] = useState<string>('');
@@ -179,12 +208,42 @@ export const BestPathGeneratorTab: React.FC<AutomatedPathGeneratorTabProps> = ({
               </div>
             )}
 
-            <button
-              onClick={() => onApplyPathToManualPlanner(currentPlan)}
-              className="mt-3 w-full inline-flex items-center justify-center text-xs font-bold bg-[#002E5D] hover:bg-blue-800 text-white py-2 px-3 rounded-lg shadow transition"
-            >
-              Apply Automated Path to Manual Plan <ArrowRight className="w-3.5 h-3.5 ml-1" />
-            </button>
+            <div className="flex flex-col gap-2 mt-3">
+              <button
+                onClick={() => onApplyPathToManualPlanner(currentPlan)}
+                className="w-full inline-flex items-center justify-center text-xs font-bold bg-[#002E5D] hover:bg-blue-800 text-white py-2 px-3 rounded-lg shadow transition"
+              >
+                Apply Automated Path to Manual Plan <ArrowRight className="w-3.5 h-3.5 ml-1" />
+              </button>
+
+              <div className="flex items-center gap-1.5">
+                <button
+                  type="button"
+                  onClick={() => exportPlanToCSV(currentPlan.schedule, completedCourseIds, 'BYU_ChemE_Automated_Plan.csv')}
+                  className="flex-1 inline-flex items-center justify-center text-xs font-bold bg-blue-600/30 hover:bg-blue-600/50 text-blue-200 border border-blue-400/40 py-1.5 px-2.5 rounded-lg shadow transition gap-1.5"
+                  title="Export this schedule to CSV file (openable in Excel, Google Sheets, or Apple Numbers)"
+                >
+                  <Download className="w-3.5 h-3.5" /> Export CSV
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => fileInputRef.current?.click()}
+                  className="flex-1 inline-flex items-center justify-center text-xs font-bold bg-slate-700 hover:bg-slate-600 text-slate-200 border border-slate-600 py-1.5 px-2.5 rounded-lg shadow transition gap-1.5"
+                  title="Upload previously saved plan CSV file"
+                >
+                  <Upload className="w-3.5 h-3.5" /> Upload CSV
+                </button>
+              </div>
+
+              <input
+                type="file"
+                ref={fileInputRef}
+                onChange={handleFileUpload}
+                accept=".csv"
+                className="hidden"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -216,7 +275,7 @@ export const BestPathGeneratorTab: React.FC<AutomatedPathGeneratorTabProps> = ({
               />
               <div className="flex justify-between text-xs text-slate-400 mt-1 font-mono">
                 <span>12 cr (Light)</span>
-                <span>15 cr (Standard)</span>
+                <span>16 cr (Standard)</span>
                 <span>18 cr (Heavy)</span>
               </div>
             </div>
@@ -669,11 +728,32 @@ export const BestPathGeneratorTab: React.FC<AutomatedPathGeneratorTabProps> = ({
 
       {/* Generated Schedule Grid */}
       <div className="space-y-4">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <h3 className="text-lg font-bold text-slate-900 flex items-center gap-2">
             <CheckCircle2 className="w-5 h-5 text-[#002E5D]" /> Generated Automated Semester Plan
           </h3>
-          <span className="text-xs text-slate-500 font-mono">Total Terms: {currentPlan.totalTerms}</span>
+
+          <div className="flex items-center space-x-2">
+            <button
+              type="button"
+              onClick={() => exportPlanToCSV(currentPlan.schedule, completedCourseIds, 'BYU_ChemE_Automated_Plan.csv')}
+              className="inline-flex items-center text-xs font-bold bg-[#002E5D] hover:bg-blue-900 text-white px-3 py-1.5 rounded-lg shadow transition gap-1.5"
+              title="Export this schedule to CSV file"
+            >
+              <Download className="w-3.5 h-3.5" /> Export CSV
+            </button>
+
+            <button
+              type="button"
+              onClick={() => fileInputRef.current?.click()}
+              className="inline-flex items-center text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 border border-slate-300 px-2.5 py-1.5 rounded-lg transition gap-1.5"
+              title="Upload previously saved plan CSV file"
+            >
+              <Upload className="w-3.5 h-3.5" /> Upload CSV
+            </button>
+
+            <span className="text-xs text-slate-500 font-mono ml-2">Total Terms: {currentPlan.totalTerms}</span>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">

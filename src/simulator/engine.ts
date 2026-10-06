@@ -52,7 +52,7 @@ function calculateCalendarYear(startYear: number, academicYear: number, term: Te
 }
 
 export function generateBestGraduationPath(
-  targetMaxCredits = 15,
+  targetMaxCredits = 16,
   includeSpringSummer = true,
   selectedElectiveIds: string[] = ['058', '054', '053', '038', '061', '045'], // Default sample electives
   completedCourseIds: string[] = [],
@@ -73,11 +73,23 @@ export function generateBestGraduationPath(
     neededCoursesMap.set(c.classId, c);
   }
 
-  // Add selected electives
-  for (const elId of selectedElectiveIds) {
+  // Add selected electives and their prerequisite dependencies
+  const electiveStack = [...selectedElectiveIds];
+  const visitedElectiveIds = new Set<string>();
+
+  while (electiveStack.length > 0) {
+    const elId = electiveStack.pop()!;
+    if (visitedElectiveIds.has(elId)) continue;
+    visitedElectiveIds.add(elId);
+
     const elCourse = allCoursesMap.get(elId);
     if (elCourse) {
       neededCoursesMap.set(elCourse.classId, elCourse);
+      for (const reqId of (elCourse.prereqs || [])) {
+        if (!completed.has(reqId) && !neededCoursesMap.has(reqId)) {
+          electiveStack.push(reqId);
+        }
+      }
     }
   }
 
@@ -102,18 +114,32 @@ export function generateBestGraduationPath(
     const isSpringSummerTerm = currentTerm === 'Spring' || currentTerm === 'Summer';
     const isTermDisabled = isSpringSummerTerm && disabledSet.has(termKey);
 
+    let currentTermCredits = 0;
+    const termEnrolledCourses: Course[] = [];
+
+    // Mandatory first semester course UNIV 101
+    if (currentSemester === 1 && neededCoursesMap.has('091') && !isTermDisabled) {
+      const univ101 = neededCoursesMap.get('091')!;
+      termEnrolledCourses.push(univ101);
+      currentTermCredits += univ101.credits;
+      neededCoursesMap.delete('091');
+    }
+
     // Find eligible courses whose prerequisites are satisfied
     const eligibleCourses: Course[] = [];
 
     if (!isTermDisabled) {
       for (const [classId, course] of neededCoursesMap.entries()) {
-        const prereqsMet = course.prereqs.every(reqId => {
+        const prereqs = course.prereqs || [];
+        const concurrentPrereqs = course.concurrentPrereqs || [];
+
+        const prereqsMet = prereqs.every(reqId => {
           if (completed.has(reqId)) return true;
-          if (course.concurrentPrereqs && course.concurrentPrereqs.includes(reqId)) {
+          if (concurrentPrereqs.includes(reqId)) {
             if (termEnrolledCourses.some(c => c.classId === reqId)) return true;
             const concurrentTarget = neededCoursesMap.get(reqId);
             if (concurrentTarget && isCourseOffered(concurrentTarget, currentTerm, currentSemester, true)) {
-              return concurrentTarget.prereqs.every(p => completed.has(p));
+              return (concurrentTarget.prereqs || []).every(p => completed.has(p));
             }
           }
           return false;
@@ -130,67 +156,47 @@ export function generateBestGraduationPath(
     eligibleCourses.sort((a, b) => {
       // WRTG 150 ('092') MUST be taken in Fall Year 1 or Winter Year 1
       if (academicYear === 1 && (currentTerm === 'Fall' || currentTerm === 'Winter')) {
-        if (a.classId === '092') return -1;
-        if (b.classId === '092') return 1;
+        if (a.classId === '092' && b.classId !== '092') return -1;
+        if (b.classId === '092' && a.classId !== '092') return 1;
       }
 
-      if (isSpringSummerTerm) {
-        // In Spring and Summer terms:
-        // 1. Courses explicitly taught in Spring/Summer (like CBE 378 Material Science in Spring) -> TOP Priority!
-        // 2. Gen Ed, Religion, EMSB, and Elective courses
-        const getSpringSummerPriority = (c: Course) => {
-          const isExplicitlyTaught = c.termsTaught.some(t => t.startsWith(currentTerm));
-          if (isExplicitlyTaught) {
-            return 200 + (downstreamWeights.get(c.classId) || 0) * 10;
+      const getSpringSummerPriority = (c: Course) => {
+        const isExplicitlyTaught = c.termsTaught.some(t => t.startsWith(currentTerm));
+        if (isExplicitlyTaught) {
+          return 200 + (downstreamWeights.get(c.classId) || 0) * 10;
+        }
+        if (c.category === 'Gen') return 100;
+        if (c.category === 'Rel') return 90;
+        if (c.category === 'EMSB') return 80;
+        if (c.category === 'Eng') return 70;
+        return 10;
+      };
+
+      const getFallWinterPriority = (c: Course) => {
+        if (c.category === 'Major') {
+          const isOnlyTaughtInFallWinter = !c.termsTaught.some(t => t.startsWith('Spring') || t.startsWith('Summer'));
+          if (isOnlyTaughtInFallWinter) {
+            return 150 + (downstreamWeights.get(c.classId) || 0) * 10;
           }
-          if (c.category === 'Gen') return 100;
-          if (c.category === 'Rel') return 90;
-          if (c.category === 'EMSB') return 80;
-          if (c.category === 'Eng') return 70;
-          return 10;
-        };
-        const prioA = getSpringSummerPriority(a);
-        const prioB = getSpringSummerPriority(b);
-        if (prioA !== prioB) return prioB - prioA;
-      } else {
-        // In Fall and Winter terms:
-        // Major courses ONLY taught in Fall/Winter take highest priority.
-        // Major courses also taught in Spring (like CBE 378) have slightly lower Fall priority so they can be deferred to Spring.
-        const getFallWinterPriority = (c: Course) => {
-          if (c.category === 'Major') {
-            const isOnlyTaughtInFallWinter = !c.termsTaught.some(t => t.startsWith('Spring') || t.startsWith('Summer'));
-            if (isOnlyTaughtInFallWinter) {
-              return 150 + (downstreamWeights.get(c.classId) || 0) * 10;
-            }
-            return 85 + (downstreamWeights.get(c.classId) || 0) * 10;
-          }
-          if (c.category === 'EPSEL') return 80;
-          if (c.category === 'Eng') return 60;
-          if (c.category === 'EMSB') return 50;
-          if (c.category === 'Rel') return 20; // Lower priority in Fall/Winter so it moves to Spring/Summer
-          if (c.category === 'Gen') return 10; // Lower priority in Fall/Winter so it moves to Spring/Summer
-          return 0;
-        };
-        const prioA = getFallWinterPriority(a);
-        const prioB = getFallWinterPriority(b);
-        if (prioA !== prioB) return prioB - prioA;
-      }
+          return 85 + (downstreamWeights.get(c.classId) || 0) * 10;
+        }
+        if (c.category === 'EPSEL') return 80;
+        if (c.category === 'Eng') return 60;
+        if (c.category === 'EMSB') return 50;
+        if (c.category === 'Rel') return 20; // Lower priority in Fall/Winter so it moves to Spring/Summer
+        if (c.category === 'Gen') return 10; // Lower priority in Fall/Winter so it moves to Spring/Summer
+        return 0;
+      };
+
+      const prioA = isSpringSummerTerm ? getSpringSummerPriority(a) : getFallWinterPriority(a);
+      const prioB = isSpringSummerTerm ? getSpringSummerPriority(b) : getFallWinterPriority(b);
+
+      if (prioA !== prioB) return prioB - prioA;
 
       const weightA = (downstreamWeights.get(a.classId) || 0) * 10 + (a.category === 'Major' ? 50 : 20);
       const weightB = (downstreamWeights.get(b.classId) || 0) * 10 + (b.category === 'Major' ? 50 : 20);
       return weightB - weightA;
     });
-
-    let currentTermCredits = 0;
-    const termEnrolledCourses: Course[] = [];
-
-    // Mandatory first semester course UNIV 101
-    if (currentSemester === 1 && neededCoursesMap.has('091') && !isTermDisabled) {
-      const univ101 = neededCoursesMap.get('091')!;
-      termEnrolledCourses.push(univ101);
-      currentTermCredits += univ101.credits;
-      neededCoursesMap.delete('091');
-    }
 
     if (!isTermDisabled) {
       // Set term credit cap (Halve target max credit hours for Spring/Summer terms: full time Spring/Summer is 6+ cr vs 12+ cr Fall/Winter)
